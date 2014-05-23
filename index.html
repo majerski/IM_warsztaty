@@ -1,112 +1,101 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
-
-        <link rel="stylesheet"  href="libs/jQM-flat/jquery.mobile.flatui.css">
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-
-        <title>App Name</title>
-    </head>
-    <body>
-        <div id="app">
-            <div id="home-page" data-role="page">
-                <div data-role="content" >
-                    <div id="logoContainer" class="centerText">
-                            <img src="img/logo.png" id="logo"  />
-                        </div>
-                    <div id="menu">
-                        <a data-icon="flat-heart" data-theme="d" href="#second-page" data-role="button">Second Page</a>
-                        <a data-icon="flat-time" data-theme="f" href="#due-page"  data-role="button">Fake Btn</a>
-                        <fieldset class="ui-grid-a">
-                            <div class="ui-block-a"> <a data-icon="flat-checkround" data-theme="e" href="#tips-page"  data-role="button">Fake Btn</a></div>
-                            <div class="ui-block-b"><a data-icon="ms-question" data-theme="g" href="#about-page"  data-role="button" >About</a></div>
-                        </fieldset>
-
-
-                    </div>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
+		<link rel="stylesheet"  href="libs/jQM-flat/jquery.mobile.flatui.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<title>Inter Cars</title>
+	</head>
+	<body>
+		<div id="app">
+			<div id="page1" data-role="page">
+				<div data-role="content" >
+					<div id="logoContainer" class="centerText">
+						<img src="img/logo.png" id="logo"  />
+					</div>
+					<div id="menu">
+						<a data-icon="flat-menu" data-theme="d" href="#page2" data-role="button">Warsztaty</a>
+						<a data-icon="flat-location" data-theme="g" href="#page3" data-role="button">Mapa</a>
+						<a data-icon="flat-new" data-theme="f" href="#page4" data-role="button">Wyceń naprawę</a>
+					</div>
+				</div>
+			</div>
+			<div id="page2" data-role="page">
+				<div data-role="panel" id="page2-panel" data-position="right" data-theme="a" data-display="push" class="ui-panel ui-panel-position-right ui-panel-display-push ui-body-a ui-panel-animate ui-panel-closed">
+					<div class="ui-panel-inner">
+						<p>Panel z Logotypami</p>
+					</div>
+				</div>
+				<div data-role="header" data-id="page2-header" id="page2-header" data-position="fixed" class="ui-header" data-theme="d">
+					<a href="#page1" data-icon="home" data-inline="true" data-iconpos="notext">powrót</a>
+					<h1>Warsztaty</h1>
+					<a href="#page2-panel" data-role="button" data-icon="flat-menu" data-inline="true" data-iconpos="notext">menu</a>
+				</div>
+				<div data-role="content">
+                    Lista warsztatów
                 </div>
-            </div><!-- /page  -->
-
-            <div  id="second-page" data-role="page">
-                <div data-role="header" data-id="header" id="header" data-position="fixed" class="ui-header">
-                    <a href="#home-page"  data-role="button" data-icon="arrow-l" data-inline="true" >Back</a>
-                    <h1>Sample Form</h1>
-                </div>
-                <div data-role="content" >
-                    <form  id="search-form" action="">
-                        <label for="address">Address</label>
-                        <input type="text" name="address" id="address" data-mini="true" placeholder="123 cedar ave"/>
-                        <label for="dentist">Person <span class="small-text">(optional)</span></label>
-                        <input type="text" name="dentist" id="dentist" data-mini="true" placeholder="Dr Smith"/>
-
-                        <div data-role="fieldcontain">
-                        <fieldset data-role="controlgroup" data-mini="true">
-                            <legend>Availability</legend>
-                            <input type="checkbox" name="checkbox-1a"    id="checkbox-1a" class="custom" checked="checked" />
-                            <label for="checkbox-1a">Morning</label>
-
-                            <input type="checkbox" name="checkbox-2a"   id="checkbox-2a" class="custom" checked="checked"/>
-                            <label for="checkbox-2a">Afternoon</label>
-
-                            <input type="checkbox" name="checkbox-3a"   id="checkbox-3a" class="custom" checked="checked" />
-                            <label for="checkbox-3a">Evening</label>
-
-                            <input type="checkbox" name="checkbox-4a"  id="checkbox-4a" class="custom" />
-                            <label for="checkbox-4a">Weekends</label>
-                        </fieldset>
-                        </div>
-
-
-                        <div data-role="fieldcontain">
-                            <label for="select-choice-a">Type</label>
-                            <select name="select-choice" id="select-choice-a" data-native-menu="false" data-mini="true" data-theme="b">
-
-                                <option value="val1">Option 1</option>
-                                <option value="val2">Option 2</option>
-                                <option value="val3">Option 3</option>
-
-                            </select>
-                        </div>
-
-                        <button type="submit" data-theme="f" data-mini="false" class="ui-btn-hidden" aria-disabled="false">Search</button>
-                    </form>
-                </div>
-                <div id="footer" data-role="footer" data-id="footer1" data-position="fixed" data-tap-toggle="false">
-                    <div id="navbar" data-role="navbar">
+                <div data-role="footer" data-id="page3-footer" data-position="fixed" data-tap-toggle="false" data-theme="c">
+                    <div data-role="navbar">
                         <ul>
-                            <li><a id="map-button" href="#second-page" data-icon="flat-location" data-theme="b">Map</a></li>
-                            <li><a id="list-button" href="#list-page" data-icon="flat-menu">List</a></li>
-                            <li><a id="search-button" href="#search-page" data-icon="ms-search">Search</a></li>
+                            <li><a href="#page2" data-icon="flat-menu" data-theme="d">Warsztaty</a></li>
+                            <li><a href="#page3" data-icon="flat-location">Mapa</a></li>
+                            <li><a href="#page4" data-icon="flat-new">Wyceń naprawę</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-
-
-            <div  id="about-page" data-role="page">
-                <div data-role="header" data-id="header1" data-position="fixed" class="ui-header">
-                    <a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Back</a>
-                    <h1>About App</h1>
+			<div id="page3" data-role="page">
+				<div data-role="panel" id="page3-panel" data-position="right" data-theme="a" data-display="push" class="ui-panel ui-panel-position-right ui-panel-display-push ui-body-a ui-panel-animate ui-panel-closed">
+					<p>Logotypy 2</p>
+				</div>
+                <div data-role="header" data-id="page3-header" id="page3-header" data-position="fixed" class="ui-header" data-theme="g">
+                    <a href="#page1" data-role="button" data-icon="home" data-inline="true" data-iconpos="notext">powrót</a>
+                    <h1>Mapa</h1>
+					<a href="#page3-panel" data-role="button" data-icon="flat-menu" data-inline="true" data-iconpos="notext">menu</a>
                 </div>
-                <div data-role="content"  class="big-text">
-                    <h2>Privacy Policy</h2>
-                    <p>...</p>
+                <div data-role="content">
+					mapa 
+				</div>
+				<div data-role="footer" data-id="page3-footer" data-position="fixed" data-tap-toggle="false" data-theme="c">
+                    <div data-role="navbar">
+                        <ul>
+                            <li><a href="#page2" data-icon="flat-menu">Warsztaty</a></li>
+                            <li><a href="#page3" data-icon="flat-location" data-theme="g">Mapa</a></li>
+                            <li><a href="#page4" data-icon="flat-new">Wyceń naprawę</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+			</div>
+			<div id="page4" data-role="page">
+				<div data-role="panel" id="page4-panel" data-position="right" data-theme="a" data-display="push" class="ui-panel ui-panel-position-right ui-panel-display-push ui-body-a ui-panel-animate ui-panel-closed">
+					Logotypy 3
+				</div>
+                <div data-role="header" data-id="page4-header" id="page4-header" data-position="fixed" class="ui-header" data-theme="f">
+                    <a href="#page1" data-role="button" data-icon="home" data-inline="true" data-iconpos="notext">powrót</a>
+                    <h1>Wyceń naprawę</h1>
+					<a href="#page4-panel" data-role="button" data-icon="flat-menu" data-inline="true" data-iconpos="notext">menu</a>
+                </div>
+                <div data-role="content">
+					formularz wyceny 
+				</div>
+				<div data-role="footer" data-id="page4-footer" data-position="fixed" data-tap-toggle="false" data-theme="c">
+                    <div data-role="navbar">
+                        <ul>
+                            <li><a href="#page2" data-icon="flat-menu">Warsztaty</a></li>
+                            <li><a href="#page3" data-icon="flat-location">Mapa</a></li>
+                            <li><a href="#page4" data-icon="flat-new" data-theme="f">Wyceń naprawę</a></li>
+                        </ul>
+                    </div>
+                </div>
+			</div>
         </div>
-
-
         <script type="text/javascript" src="libs/fastclick.min.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="libs/jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="libs/jQueryMobile/jquery.mobile-1.3.2.min.js"></script>
-
-
         <script type="text/javascript" src="js/index.js"></script>
-
         <script type="text/javascript">
             app.initialize();
         </script>
