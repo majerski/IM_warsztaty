@@ -18,7 +18,7 @@ var app = {
 		
     },
 	onOffline: function() {
-		window.plugins.toast.showLongBottom('Brak połączenia z internetem.');
+		window.plugins.toast.showLongBottom('Brak połączenia z internetem.',function(a){},function(b){});
 	},
 	onOnline: function() {
         // google map
