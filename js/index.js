@@ -23,17 +23,19 @@ var app = {
 	},
 	onOnline: function() {
         // google map + RSS
-		var FPreturnSuccess='FPsuccess';
-		var FPSettingsFileName='camera-2.txt';
-		var FPSettingsDownloadUrl='http://www.tvregionalna24.pl/camera-2.txt';
-		var FPbase='http://www.tvregionalna24.pl/';
-		var FPsuccess = function(result) { 
+		alert('online');
+		var returnSuccess='success';
+		var SettingsFileName='camera-2.txt';
+		var SettingsDownloadUrl='http://www.tvregionalna24.pl/camera-2.txt';
+		var base='http://www.tvregionalna24.pl/';
+		var success = function(result) { 
 			alert("SUCCESS: \r\n"+result );    
 		};
-		var FPerror = function(error) { 
+		var error = function(error) { 
 			alert("ERROR: \r\n"+error ); 
 		};
-		FilePlugin.callNativeFunction(FPsuccess,FPerror,{'result':FPreturnSuccess,'file':FPSettingsFileName,'downloadurl':FPSettingsDownloadUrl,'base_path':FPbase}); 
+		FilePlugin.callNativeFunction( success, error,{'result':returnSuccess,'file':SettingsFileName,'downloadurl':SettingsDownloadUrl,'base_path':base} );
+		alert('alert after file plugin');
     },
 	onLoad: function() {
         
