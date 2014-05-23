@@ -18,11 +18,11 @@ var app = {
 		
     },
 	onOffline: function() {
-        window.plugins.toast.showLongBottom('Brak połączenia z internetem.');
-    },
+		window.plugins.toast.showLongBottom('Brak połączenia z internetem.');
+	},
 	onOnline: function() {
         // google map
-    }
+    },
 	onLoad: function() {
         
     }
