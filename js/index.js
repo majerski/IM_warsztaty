@@ -19,7 +19,6 @@ var app = {
     },
 	onOffline: function() {
 		window.plugins.toast.showLongBottom('Brak połączenia z internetem.',function(a){},function(b){});
-		// dodać ikonę o braku internetu + odśwież
 	},
 	onOnline: function() {
        window.plugins.toast.showLongBottom('Połączono z internetem.',function(a){},function(b){});
