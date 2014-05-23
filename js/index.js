@@ -18,10 +18,10 @@ var app = {
 		
     },
 	onOffline: function() {
-		window.plugins.toast.showLongBottom('Brak połączenia z internetem.',function(a){},function(b){});
+		window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 	},
 	onOnline: function() {
-       window.plugins.toast.showLongBottom('Połączono z internetem.',function(a){},function(b){});
+		
     },
 	onLoad: function() {
         
