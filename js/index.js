@@ -40,9 +40,11 @@ var app = {
     },
     // Phonegap is now ready...
     onDeviceReady: function() {
-        console.log("device ready, start making you custom calls!");
-
-        // Start adding your code here....
-
+        window.plugins.toast.showShortTop('Hello there!',function(a){
+			console.log('toast success: ' + a)
+		},
+		function(b){
+			alert('toast error: ' + b)}
+		);
     }
 };
