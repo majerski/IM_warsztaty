@@ -22,20 +22,7 @@ var app = {
 		// dodać ikonę o braku internetu + odśwież
 	},
 	onOnline: function() {
-        // google map + RSS
-		alert('online');
-		var returnSuccess='success';
-		var SettingsFileName='camera-2.txt';
-		var SettingsDownloadUrl='http://www.tvregionalna24.pl/camera-2.txt';
-		var base='http://www.tvregionalna24.pl/';
-		var success = function(result) { 
-			alert("SUCCESS: \r\n"+result );    
-		};
-		var error = function(error) { 
-			alert("ERROR: \r\n"+error ); 
-		};
-		FilePlugin.callNativeFunction( success, error,{'result':returnSuccess,'file':SettingsFileName,'downloadurl':SettingsDownloadUrl,'base_path':base} );
-		alert('alert after file plugin');
+       window.plugins.toast.showLongBottom('Połączono z internetem.',function(a){},function(b){});
     },
 	onLoad: function() {
         
