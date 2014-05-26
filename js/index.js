@@ -1,48 +1,41 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 var app = {
-    SOME_CONSTANTS : false,  // some constant
-
-
-    // Application Constructor
     initialize: function() {
-        console.log("console log init");
         this.bindEvents();
         this.initFastClick();
     },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+		document.addEventListener("offline", this.onOffline, false);
+		document.addEventListener("online", this.onOnline, false);
+		document.addEventListener("load", this.onLoad, false);
     },
-    initFastClick : function() {
+    initFastClick: function() {
         window.addEventListener('load', function() {
             FastClick.attach(document.body);
-        }, false);
+        },false);
     },
-    // Phonegap is now ready...
     onDeviceReady: function() {
-        console.log("device ready, start making you custom calls!");
-
-        // Start adding your code here....
-
+		
+    },
+	onOffline: function() {
+		window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
+		var warsztaty = [
+			{"nazwa":"nazwa1","adres":"adres1","tel":"tel1","lat":54.156524,"lng":19.410400},
+			{"nazwa":"nazwa2","adres":"adres2","tel":"tel2","lat":54.153710,"lng":19.389114},
+			{"nazwa":"nazwa3","adres":"adres3","tel":"tel3","lat":54.139231,"lng":19.441986},
+		];
+	},
+	onOnline: function() {
+		var request = $.ajax({
+			url: "http://www.tvregionalna24.pl/warsztaty.php",
+			type: "GET",
+			dataType: "json"
+		});
+		request.done(function(response){
+			alert(response);
+		});
+    },
+	onLoad: function() {
+        
     }
 };

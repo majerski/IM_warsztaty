@@ -6,7 +6,7 @@
         id        = "com.phonegap.imwarsztaty"
         version   = "1.0.0">
 
-    <name>Inter Cars sieć warsztatów Q-Service, Perfect Service, Q-Service Premium</name>
+    <name>11AA Inter Cars sieć warsztatów Q-Service, Perfect Service, Q-Service Premium</name>
 
     <description>
         Inter Cars sieć warsztatów Q-Service, Perfect Service, Q-Service Premium.
@@ -51,6 +51,7 @@
         <gap:plugin name="Example" />
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
+	<gap:plugin name="nl.x-services.plugins.toast" version="2.0" />			<!-- https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin/blob/720f87abc865ad836e097101dbfc2af7bdf8fca7/README.md -->
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
