@@ -34,8 +34,8 @@ h1 {
 a {
 	text-decoration: none;
 }
-#main-loader {
-	position:fixed;
+.main-loader {
+	position:absolute;
     top:0;
     left:0;
     bottom:0;
