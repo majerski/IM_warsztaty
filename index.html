@@ -9,16 +9,17 @@
 		<title>Inter Cars</title>
 	</head>
 	<body>
-		<div id="app">
+		<div id="main-loader"></div>
+		<div id="app" style="display:none;">
 			<div id="page1" data-role="page">
 				<div data-role="content" >
 					<div id="logoContainer" class="centerText">
 						<img src="img/logo.png" id="logo"  />
 					</div>
 					<div id="menu">
-						<a data-icon="flat-menu" data-theme="d" href="#page2" data-role="button">Warsztaty</a>
-						<a data-icon="flat-location" data-theme="g" href="#page3" data-role="button">Mapa</a>
-						<a data-icon="flat-new" data-theme="f" href="#page4" data-role="button">Wyceń naprawę</a>
+						<a data-icon="flat-menu" data-theme="d" href="#page2" data-role="button" data-prefetch="true">Warsztaty</a>
+						<a data-icon="flat-location" data-theme="g" href="#page3" data-role="button" data-prefetch="true">Mapa</a>
+						<a data-icon="flat-new" data-theme="f" href="#page4" data-role="button" data-prefetch="true">Wyceń naprawę</a>
 					</div>
 				</div>
 			</div>
