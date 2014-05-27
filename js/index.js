@@ -36,6 +36,9 @@ var app = {
 		});
     },
 	onLoad: function() {
-        
+        var loader = document.getElementById('main-loader'); 
+		loader.style.display = 'none';
+		var appDiv = document.getElementById('app'); 
+		appDiv.style.display = 'block';
     }
 };

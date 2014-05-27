@@ -41,8 +41,7 @@ $(document).ready(function(){
 		type: "GET",
 		data: {type:"version"},
 		dataType: "json",
-		async: false,
-		cache: false
+		async: false
 	});
 	checkVersion.done(function(response){
 		if(typeof response != 'undefined') {
@@ -71,8 +70,7 @@ $(document).ready(function(){
 			type: "GET",
 			data: {type:"list"},
 			dataType: "json",
-			async: false,
-			cache: false
+			async: false
 		});
 		ajaxFeed.done(function(response){
 			if(typeof response != 'undefined') {
@@ -87,7 +85,7 @@ $(document).ready(function(){
 	var len = Object.keys(warsztaty).length;
 	if( len > 0 ) {
 		var out = '<div class="warsztat"><ul data-role="listview" data-ajax="false" data-inset="true">';
-		var per_page = 10;
+		var per_page = 11;
 		
 		// wstawić pierwszy najbliższy warsztat - jest miejsce akurat dla jednego
 		
