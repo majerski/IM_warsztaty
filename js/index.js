@@ -1,21 +1,24 @@
 var app = {
     initialize: function() {
         this.bindEvents();
-        //this.initFastClick();
+        this.initFastClick();
     },
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
 		document.addEventListener("load", this.onLoad, false);
     },
     initFastClick: function() {
-        //window.addEventListener('load', function() {
-        //    FastClick.attach(document.body);
-        //},false);
+        window.addEventListener('load', function() {
+            FastClick.attach(document.body);
+        },false);
     },
     onDeviceReady: function() {
-		alert("onDeviceReady");
+		app.receivedEvent('deviceready');
 		document.addEventListener("offline", this.onOffline, false);
 		document.addEventListener("online", this.onOnline, false);
+		if((navigator.network.connection.type).toUpperCase() != "NONE" && (navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
+			this.onOnline();
+		}
     },
 	onLoad: function() {
         alert("onLoad");
