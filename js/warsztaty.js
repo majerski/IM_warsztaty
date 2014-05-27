@@ -117,7 +117,7 @@ function warsztatyLista(){
 			onInit: pageInit
 		});
 	} else {
-		window.plugins.toast.showShortCenter('Nie udało się wgrać listy warsztatów. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
+		//window.plugins.toast.showShortCenter('Nie udało się wgrać listy warsztatów. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
 	}
 }
 $(document).on('pagebeforeshow',function(){
