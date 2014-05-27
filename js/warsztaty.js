@@ -29,6 +29,7 @@ function renderWarsztat(id){
 			$("#warsztaty_content").append('<h2>'+warsztaty[i].konto+'</h2>');
 			$("#warsztaty_content").append('<p>'+warsztaty[i].ulica+'<br />'+warsztaty[i].kod.substr(0,2)+'-'+warsztaty[i].kod.substr(3)+' '+warsztaty[i].miasto+'</p>');
 			$("#warsztaty_content").append('<button data-theme="d" data-disabled="false" onclick="dial(\''+warsztaty[i].kom+'\')">Zadzwoń</button>');
+			$('#warsztat button').button();
 			$('#warsztat').page();
 		}
 	}
