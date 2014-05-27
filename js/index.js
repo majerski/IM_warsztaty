@@ -19,9 +19,11 @@ var app = {
     },
 	onOffline: function() {
 		//window.plugins.toast.show('Brak połączenia z internetem.','short','center');
-		toast.show('Brak połączenia z internetem.','short','center');
+		//toast.show('Brak połączenia z internetem.','short','center');
 	},
 	onOnline: function() {
+		window.plugins.toast.show('ok','short','center');
+		/*
 		var RSS = $.ajax({
 			url: "http://www.q-service.com.pl/rss/",
 			type: "GET",
@@ -31,7 +33,7 @@ var app = {
 		RSS.done(function(response){
 			alert(response);
 		});
-		toast.show('Jest internet!','short','center');
+		*/
     },
 	onLoad: function() {
         
