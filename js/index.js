@@ -15,14 +15,14 @@ var app = {
         },false);
     },
     onDeviceReady: function() {
-		
+		alert("onDeviceReady");
     },
 	onOffline: function() {
-		document.write("offline!");
+		alert("onOffline");
 		//window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 	},
 	onOnline: function() {
-		document.write("Hello!");
+		alert("onOnline");
 		/*
 		var RSS = $.ajax({
 			url: "http://www.q-service.com.pl/rss/",
@@ -36,6 +36,6 @@ var app = {
 		*/
     },
 	onLoad: function() {
-        
+        alert("onLoad");
     }
 };
