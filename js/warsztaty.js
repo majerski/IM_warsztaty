@@ -10,11 +10,14 @@ function supports_html5_storage() {
 function pageInit(){
     var new_content = $('#warsztaty_lista_hidden div.warsztat:eq(0)').clone();
     $('#warsztaty_lista').append(new_content);
+	$('#page2').page();
+	$('#warsztaty_lista ul').listview();
     return false;
 }
 function pageClick(page_index, jq){
     var new_content = $('#warsztaty_lista_hidden div.warsztat:eq('+(page_index-1)+')').clone();
     $('#warsztaty_lista').empty().append(new_content);
+	$('#warsztaty_lista ul').listview();
     return false;
 }
 function renderWarsztat(id){
@@ -33,8 +36,10 @@ function dial(number){
 	window.location.href = 'tel:+48'+number;
 }
 $(window).load(function(){
-	$("#main-loader").hide();
-	$("#app").show();
+	var loader = document.getElementById('main-loader'); 
+	loader.style.display = 'none';
+	var appDiv = document.getElementById('app'); 
+	appDiv.style.display = 'block';
 });
 $(document).ready(function(){
 	var feedFromServer = false;
@@ -84,12 +89,12 @@ $(document).ready(function(){
 	}
 	var len = Object.keys(warsztaty).length;
 	if( len > 0 ) {
-		var out = '<div class="warsztat"><ul data-role="listview" data-ajax="false" data-inset="true">';
+		var out = '<div class="warsztat"><ul data-ajax="false" data-inset="true">';
 		var per_page = 11;
 		// wstawić pierwszy najbliższy warsztat - jest miejsce akurat dla jednego
 		for(var i=1; i<=len; i++) {
 			if(i%per_page==0){
-				out = out + '</ul></div><div class="warsztat"><ul data-role="listview" data-ajax="false" data-inset="true">';
+				out = out + '</ul></div><div class="warsztat"><ul data-ajax="false" data-inset="true">';
 			}
 			out = out + '<li><a href="#warsztat" data-ajax="false" onclick="renderWarsztat('+i+')">' + warsztaty[i].konto + '</a></li>';
 		}
