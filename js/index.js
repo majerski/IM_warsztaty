@@ -18,7 +18,8 @@ var app = {
 		
     },
 	onOffline: function() {
-		window.plugins.toast.show('Brak połączenia z internetem.','short','center');
+		//window.plugins.toast.show('Brak połączenia z internetem.','short','center');
+		toast.show('Brak połączenia z internetem.','short','center');
 	},
 	onOnline: function() {
 		var RSS = $.ajax({
@@ -30,6 +31,7 @@ var app = {
 		RSS.done(function(response){
 			alert(response);
 		});
+		toast.show('Jest internet!','short','center');
     },
 	onLoad: function() {
         
