@@ -24,11 +24,12 @@ function renderWarsztat(id){
 	var len = Object.keys(warsztaty).length;
 	for(var i=1; i<=len; i++) {
 		if(i==id){
-			console.log(warsztaty[i]);
+			//console.log(warsztaty[i]);
 			$("#warsztaty_content").empty();
 			$("#warsztaty_content").append('<h2>'+warsztaty[i].konto+'</h2>');
 			$("#warsztaty_content").append('<p>'+warsztaty[i].ulica+'<br />'+warsztaty[i].kod.substr(0,2)+'-'+warsztaty[i].kod.substr(3)+' '+warsztaty[i].miasto+'</p>');
-			$("#warsztaty_content").append('<button data-icon="flat-bubble" data-theme="d" class="ui-btn-hidden" data-disabled="false" onclick="dial(\''+warsztaty[i].kom+'\')">Zadzwoń</button>');
+			$("#warsztaty_content").append('<button data-theme="d" data-disabled="false" onclick="dial(\''+warsztaty[i].kom+'\')">Zadzwoń</button>');
+			$('#warsztat').page();
 		}
 	}
 }
@@ -40,6 +41,11 @@ $(window).load(function(){
 	loader.style.display = 'none';
 	var appDiv = document.getElementById('app'); 
 	appDiv.style.display = 'block';
+});
+$(document).on('pagebeforeshow', function () {
+    $(this).find('a[data-rel=back]').buttonMarkup({
+        iconpos: 'notext'
+    });
 });
 $(document).ready(function(){
 	var feedFromServer = false;
