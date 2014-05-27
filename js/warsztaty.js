@@ -32,10 +32,12 @@ function renderWarsztat(id){
 function dial(number){
 	window.location.href = 'tel:+48'+number;
 }
-
+$(window).load(function(){
+	$("#main-loader").hide();
+	$("#app").show();
+});
 $(document).ready(function(){
 	var feedFromServer = false;
-	
 	var checkVersion = $.ajax({
 		url: "http://arcontact.pl/warsztaty_inter_cars/feed.php",
 		type: "GET",
@@ -63,7 +65,6 @@ $(document).ready(function(){
 			}
 		}
 	});
-	
 	if(feedFromServer) {
 		var ajaxFeed = $.ajax({
 			url: "http://arcontact.pl/warsztaty_inter_cars/feed.php",
@@ -81,14 +82,11 @@ $(document).ready(function(){
 			}
 		});
 	}
-	
 	var len = Object.keys(warsztaty).length;
 	if( len > 0 ) {
 		var out = '<div class="warsztat"><ul data-role="listview" data-ajax="false" data-inset="true">';
 		var per_page = 11;
-		
 		// wstawić pierwszy najbliższy warsztat - jest miejsce akurat dla jednego
-		
 		for(var i=1; i<=len; i++) {
 			if(i%per_page==0){
 				out = out + '</ul></div><div class="warsztat"><ul data-role="listview" data-ajax="false" data-inset="true">';
@@ -111,5 +109,4 @@ $(document).ready(function(){
 	} else {
 		window.plugins.toast.showShortCenter('Nie udało się uzyskać najnowszej listy warsztatów.',function(a){},function(b){});
 	}
-	
 });

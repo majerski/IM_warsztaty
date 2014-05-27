@@ -7,7 +7,7 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
 		document.addEventListener("offline", this.onOffline, false);
 		document.addEventListener("online", this.onOnline, false);
-		document.addEventListener("load", this.onLoad, false);
+		//document.addEventListener("load", this.onLoad, false);
     },
     initFastClick: function() {
         window.addEventListener('load', function() {
@@ -35,10 +35,7 @@ var app = {
 			alert(response);
 		});
     },
-	onLoad: function() {
-        var loader = document.getElementById('main-loader'); 
-		loader.style.display = 'none';
-		var appDiv = document.getElementById('app'); 
-		appDiv.style.display = 'block';
-    }
+	//onLoad: function() {
+    //    
+    //}
 };
