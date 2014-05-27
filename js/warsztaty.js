@@ -1,5 +1,5 @@
 $(window).load(function(){
-	$("#main-loader").remove();
+	$(".main-loader").remove();
 	$("#app").show();
 });
 
@@ -92,6 +92,7 @@ function warsztatyLista(){
 	}
 	var len = Object.keys(warsztaty).length;
 	if( len > 0 ) {
+		$('#warsztaty_lista').empty().addClass('main-loader');
 		var out = '<div class="warsztat"><ul data-ajax="false" data-inset="true">';
 		var per_page = 11;
 		// wstawić pierwszy najbliższy warsztat - jest miejsce akurat dla jednego

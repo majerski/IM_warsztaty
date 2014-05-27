@@ -21,6 +21,7 @@ var app = {
 		window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 	},
 	onOnline: function() {
+		/*
 		var RSS = $.ajax({
 			url: "http://www.q-service.com.pl/rss/",
 			type: "GET",
@@ -30,6 +31,18 @@ var app = {
 		RSS.done(function(response){
 			alert(response);
 		});
+		*/
+		var checkVersion2 = $.ajax({
+			url: "http://arcontact.pl/warsztaty_inter_cars/feed.php",
+			type: "GET",
+			data: {type:"version"},
+			dataType: "json",
+			async: false
+		});
+		checkVersion2.done(function(resp){
+			alert(resp);
+		});
+		
     },
 	//onLoad: function() {
     //    
