@@ -32,17 +32,6 @@ var app = {
 			alert(response);
 		});
 		*/
-		var checkVersion2 = $.ajax({
-			url: "http://arcontact.pl/warsztaty_inter_cars/feed.php",
-			type: "GET",
-			data: {type:"version"},
-			dataType: "json",
-			async: false
-		});
-		checkVersion2.done(function(resp){
-			alert(resp);
-		});
-		
     },
 	//onLoad: function() {
     //    
