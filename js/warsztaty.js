@@ -120,10 +120,12 @@ function warsztatyLista(){
 		window.plugins.toast.showShortCenter('Nie udało się wgrać listy warsztatów. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
 	}
 }
-$(document).on('pagebeforeshow','#page1',function(){
+$(document).on('pagebeforeshow',function(){
 	$(this).find('a[data-rel=back]').buttonMarkup({
         iconpos: 'notext'
     });
+});
+$(document).on('pagebeforeshow','#page2',function(){
 	$(".refresh_connection").bind("click",function(){
 		if(navigator.onLine) {
 			checkVersion();
@@ -132,6 +134,8 @@ $(document).on('pagebeforeshow','#page1',function(){
 			window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 		}
 	});
+});
+$(document).ready(function(){
 	checkVersion();
 	warsztatyLista();
 });
