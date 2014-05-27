@@ -1,4 +1,4 @@
-var app = {
+var App = {
     initialize: function() {
         this.bindEvents();
         this.initFastClick();
