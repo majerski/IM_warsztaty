@@ -125,7 +125,9 @@ $(document).on('pagebeforeshow',function(){
         iconpos: 'notext'
     });
 });
-$(document).on('pagebeforeshow','#page2',function(){
+$(document).ready(function(){
+	checkVersion();
+	warsztatyLista();
 	$(".refresh_connection").bind("click",function(){
 		if(navigator.onLine) {
 			checkVersion();
@@ -134,8 +136,4 @@ $(document).on('pagebeforeshow','#page2',function(){
 			window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 		}
 	});
-});
-$(document).ready(function(){
-	checkVersion();
-	warsztatyLista();
 });
