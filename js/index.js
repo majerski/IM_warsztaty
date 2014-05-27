@@ -19,19 +19,15 @@ var app = {
     },
 	onOffline: function() {
 		window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
-		var warsztaty = [
-			{"nazwa":"nazwa1","adres":"adres1","tel":"tel1","lat":54.156524,"lng":19.410400},
-			{"nazwa":"nazwa2","adres":"adres2","tel":"tel2","lat":54.153710,"lng":19.389114},
-			{"nazwa":"nazwa3","adres":"adres3","tel":"tel3","lat":54.139231,"lng":19.441986},
-		];
 	},
 	onOnline: function() {
-		var request = $.ajax({
-			url: "http://www.tvregionalna24.pl/warsztaty.php",
+		var RSS = $.ajax({
+			url: "http://www.q-service.com.pl/rss/",
 			type: "GET",
-			dataType: "json"
+			dataType: "json",
+			async: false
 		});
-		request.done(function(response){
+		RSS.done(function(response){
 			alert(response);
 		});
     },

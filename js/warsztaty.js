@@ -1,4 +1,12 @@
+$(window).load(function(){
+	var loader = document.getElementById('main-loader'); 
+	loader.style.display = 'none';
+	var appDiv = document.getElementById('app'); 
+	appDiv.style.display = 'block';
+});
+
 var warsztaty = {};
+var feedFromServer = false;
 
 function supports_html5_storage() {
   try {
@@ -9,7 +17,7 @@ function supports_html5_storage() {
 }
 function pageInit(){
     var new_content = $('#warsztaty_lista_hidden div.warsztat:eq(0)').clone();
-    $('#warsztaty_lista').append(new_content);
+    $('#warsztaty_lista').empty().append(new_content);
 	$('#page2').page();
 	$('#warsztaty_lista ul').listview();
     return false;
@@ -37,19 +45,7 @@ function renderWarsztat(id){
 function dial(number){
 	window.location.href = 'tel:+48'+number;
 }
-$(window).load(function(){
-	var loader = document.getElementById('main-loader'); 
-	loader.style.display = 'none';
-	var appDiv = document.getElementById('app'); 
-	appDiv.style.display = 'block';
-});
-$(document).on('pagebeforeshow', function () {
-    $(this).find('a[data-rel=back]').buttonMarkup({
-        iconpos: 'notext'
-    });
-});
-$(document).ready(function(){
-	var feedFromServer = false;
+function checkVersion(){
 	var checkVersion = $.ajax({
 		url: "http://arcontact.pl/warsztaty_inter_cars/feed.php",
 		type: "GET",
@@ -61,12 +57,12 @@ $(document).ready(function(){
 		if(typeof response != 'undefined') {
 			if( supports_html5_storage() ) {
 				if( typeof localStorage["version"] != 'undefined' ) {
-					var _local_version = JSON.parse( localStorage["version"] );
+					var _local_version = JSON.parse(localStorage["version"]);
 					if( parseInt(_local_version.version) != parseInt(response.version) ) {
 						localStorage["version"] = JSON.stringify(response);
 						feedFromServer = true;
 					} else {
-						warsztaty = JSON.parse( localStorage["warsztaty"] );
+						warsztaty = JSON.parse(localStorage["warsztaty"]);
 					}
 				} else {
 					localStorage["version"] = JSON.stringify(response);
@@ -77,6 +73,8 @@ $(document).ready(function(){
 			}
 		}
 	});
+}
+function warsztatyLista(){
 	if(feedFromServer) {
 		var ajaxFeed = $.ajax({
 			url: "http://arcontact.pl/warsztaty_inter_cars/feed.php",
@@ -119,6 +117,21 @@ $(document).ready(function(){
 			onInit: pageInit
 		});
 	} else {
-		window.plugins.toast.showShortCenter('Nie udało się uzyskać najnowszej listy warsztatów.',function(a){},function(b){});
+		window.plugins.toast.showShortCenter('Nie udało się wgrać listy warsztatów. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
 	}
+}
+$(document).on('pagebeforeshow','#page1',function(){
+	$(this).find('a[data-rel=back]').buttonMarkup({
+        iconpos: 'notext'
+    });
+	$(".refresh_connection").bind("click",function(){
+		if(navigator.onLine) {
+			checkVersion();
+			warsztatyLista();
+		} else {
+			window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
+		}
+	});
+	checkVersion();
+	warsztatyLista();
 });
