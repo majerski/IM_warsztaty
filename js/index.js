@@ -22,7 +22,7 @@ var app = {
 		//toast.show('Brak połączenia z internetem.','short','center');
 	},
 	onOnline: function() {
-		window.plugins.toast.show('ok','short','center');
+		window.plugins.toast.show('Hello there!', 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)})
 		/*
 		var RSS = $.ajax({
 			url: "http://www.q-service.com.pl/rss/",
