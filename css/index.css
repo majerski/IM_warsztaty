@@ -34,6 +34,16 @@ h1 {
 a {
 	text-decoration: none;
 }
+#main-loader {
+	position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-image:url(../img/preloader.gif);
+	background-position:50% 50%;
+	background-repeat: no-repeat;
+}
 /* header */
 .ui-header > .ui-btn {
     padding: 7px 10px 11px;
@@ -111,7 +121,7 @@ ul.simple-pagination {
 .simple-pagination {
 	display: block;
 	overflow: hidden;
-	padding: 0 5px 5px 0;
+	padding: 0;
 	margin: 0;
 	text-align:center;
 }
@@ -127,6 +137,16 @@ ul.simple-pagination {
 	padding: 0;
 	margin: 0;
 	display:inline-block;
+}
+
+.simple-pagination li:first-child{
+	float: left;
+}
+.simple-pagination li:last-child{
+	float: right;
+}
+.simple-pagination li:last-child a, .simple-pagination li:last-child span{
+	margin: 0;
 }
 
 .light-theme a, .light-theme span {
