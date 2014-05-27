@@ -5,7 +5,6 @@ var app = {
     },
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-		document.addEventListener("load", this.onLoad, false);
     },
     initFastClick: function() {
         window.addEventListener('load', function() {
@@ -13,12 +12,9 @@ var app = {
         },false);
     },
     onDeviceReady: function() {
-		app.receivedEvent('deviceready');
+		document.addEventListener("load", this.onLoad, false);
 		document.addEventListener("offline", this.onOffline, false);
 		document.addEventListener("online", this.onOnline, false);
-		if((navigator.network.connection.type).toUpperCase() != "NONE" && (navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
-			this.onOnline();
-		}
     },
 	onLoad: function() {
         alert("onLoad");
