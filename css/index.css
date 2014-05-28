@@ -68,7 +68,7 @@ a {
 .ui-header .ui-title{
 	
 }
-.ui-header .logo{background:url('../img/ic-logo.png') center center no-repeat;border:0px;position:static!important;left:auto;top:auto!important;width:179px;height:50px;overflow:hidden;text-indent:-9999px;margin-top:3px;}
+.ui-header .logo{background:url('../img/ic-logo.png') center center no-repeat;border:0px;position:static!important;left:auto;top:auto!important;width:179px;height:66px;overflow:hidden;text-indent:-9999px;margin-top:3px;}
 .subnav .ui-btn {
 	border:0px;
 	background: rgb(227,6,19); /* Old browsers */
