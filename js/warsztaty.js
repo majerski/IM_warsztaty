@@ -6,27 +6,14 @@ $(window).load(function(){
 var warsztaty = {};
 var feedFromServer = false;
 
+var ref = null;
 function openDeviceBrowser(externalLinkToOpen){
 	try {
-		ref = window.open(url,'_blank','location=no');
-        ref.addEventListener('loadstop', LoadStop);
-        ref.addEventListener('exit', Close);
-    }
-    catch (err)    
-    {
-        alert(err);
-    }
+		ref = window.open(url,'_system','location=no');
+    } catch (err) {
+		alert(err);
+	}
 }
-function LoadStop(event) {
-	if(event.url == "http://arcontact.pl/closeInAppBrowser.html"){
-		ref.close();
-	}    
-}
-function Close(event) {
-	ref.removeEventListener('loadstop', LoadStop);
-	ref.removeEventListener('exit', Close);
-} 
-	
 function supports_html5_storage() {
   try {
     return 'localStorage' in window && window['localStorage'] !== null;
