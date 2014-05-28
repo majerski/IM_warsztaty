@@ -1,4 +1,4 @@
-$.mobile.defaultPageTransition = 'pop';
+$.mobile.defaultPageTransition = 'none';
 
 $(window).load(function(){
 	$(".main-loader").hide();
@@ -106,7 +106,7 @@ function warsztatyLista(){
 			if(i%per_page==0){
 				out = out + '</ul></div><div class="warsztat"><ul data-ajax="false" data-inset="true">';
 			}
-			out = out + '<li><a href="#warsztat" data-ajax="false" onclick="renderWarsztat('+i+')">' + warsztaty[i].konto + '</a></li>';
+			out = out + '<li><a href="#warsztat" data-ajax="false" onclick="renderWarsztat('+i+')" data-transition="pop">' + warsztaty[i].konto + '</a></li>';
 		}
 		out = out + '</div>';
 		$("#warsztaty_lista_hidden").html(out);
