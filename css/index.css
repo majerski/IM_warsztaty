@@ -4,7 +4,15 @@ body{-webkit-touch-callout:none;-webkit-text-size-adjust:none;-webkit-user-selec
 h1{font-size:24px;font-weight:400;margin:0;overflow:visible;padding:0;text-align:center}
 a{text-decoration: none;}
 .main-loader{position:absolute;top:0;left:0;bottom:0;right:0;background-image:url(../img/preloader.gif);background-position:50% 50%;background-repeat:no-repeat}
-.ui-header{top:0;padding-top:0;background:#dadada;background:-moz-linear-gradient(left,#dadada 0,#fff 50%,#dadada 100%);background:-webkit-gradient(linear,left top,right top,color-stop(0%,#dadada),color-stop(50%,#fff),color-stop(100%,#dadada));background:-webkit-linear-gradient(left,#dadada 0,#fff 50%,#dadada 100%);background:-o-linear-gradient(left,#dadada 0,#fff 50%,#dadada 100%);background:-ms-linear-gradient(left,#dadada 0,#fff 50%,#dadada 100%);background:linear-gradient(to right,#dadada 0,#fff 50%,#dadada 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dadada', endColorstr='#dadada', GradientType=1);text-align:center;border:0}
+.ui-header{top:0;padding-top:0;text-align:center;border:0;background: rgb(197,197,197);
+background: -moz-linear-gradient(left,  rgb(197,197,197) 0%, rgb(243,243,243) 50%, rgb(197,197,197) 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb(197,197,197)), color-stop(50%,rgb(243,243,243)), color-stop(100%,rgb(197,197,197)));
+background: -webkit-linear-gradient(left,  rgb(197,197,197) 0%,rgb(243,243,243) 50%,rgb(197,197,197) 100%);
+background: -o-linear-gradient(left,  rgb(197,197,197) 0%,rgb(243,243,243) 50%,rgb(197,197,197) 100%);
+background: -ms-linear-gradient(left,  rgb(197,197,197) 0%,rgb(243,243,243) 50%,rgb(197,197,197) 100%);
+background: linear-gradient(to right,  rgb(197,197,197) 0%,rgb(243,243,243) 50%,rgb(197,197,197) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5c5c5', endColorstr='#c5c5c5',GradientType=1 );
+}
 #page0-header{height:71px;}
 .ui-header .logo{background:url('../img/ic-logo.png') center center no-repeat;border:0px;position:static!important;left:auto;top:auto!important;width:169px;height:66px;overflow:hidden;text-indent:-9999px;}
 .ui-header .start-navbar{height:5px;overflow:hidden;background:#e30613;background:-moz-linear-gradient(top,#e30613 0,#ae0f0a 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#e30613),color-stop(100%,#ae0f0a));background:-webkit-linear-gradient(top,#e30613 0,#ae0f0a 100%);background:-o-linear-gradient(top,#e30613 0,#ae0f0a 100%);background:-ms-linear-gradient(top,#e30613 0,#ae0f0a 100%);background:linear-gradient(to bottom,#e30613 0,#ae0f0a 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e30613', endColorstr='#ae0f0a', GradientType=0)}
@@ -34,24 +42,16 @@ ul.simple-pagination {list-style: none;}
 .light-theme .current {background: #666;color: #FFF;border-color: #444;box-shadow: 0 1px 0 rgba(255,255,255,1), 0 0 2px rgba(0, 0, 0, 0.3) inset;cursor: default;}
 .light-theme .ellipse {background: none;border: none;border-radius: 0;box-shadow: none;font-weight: bold;cursor: default;}
 
-.ikona1{background-image:url('../img/srodek-1.png');}
-.ikona2{background-image:url('../img/srodek-2.png');}
-.ikona3{background-image:url('../img/srodek-3.png');}
-.ikona4{background-image:url('../img/srodek-4.png');}
-#page0 .ui-content .ui-btn{border:0px;background-position:50% 25%;background-repeat:no-repeat;padding-top:180px;padding-bottom:20px;}
+#page0 .ui-content .ui-btn-up-c.ikona1{background-image:url('../img/srodek-1.png');}
+#page0 .ui-content .ui-btn-up-c.ikona2{background-image:url('../img/srodek-2.png');}
+#page0 .ui-content .ui-btn-up-c.ikona3{background-image:url('../img/srodek-3.png');}
+#page0 .ui-content .ui-btn-up-c.ikona4{background-image:url('../img/srodek-4.png');}
+#page0 .ui-content .ui-btn-hover-c.ikona1{background-image:url('../img/srodek-1h.png');}
+#page0 .ui-content .ui-btn-hover-c.ikona2{background-image:url('../img/srodek-2h.png');}
+#page0 .ui-content .ui-btn-hover-c.ikona3{background-image:url('../img/srodek-3h.png');}
+#page0 .ui-content .ui-btn-hover-c.ikona4{background-image:url('../img/srodek-4h.png');}
+#page0 .ui-content .ui-btn{border:0px;background-position:50% 20%;background-repeat:no-repeat;padding-top:130px;padding-bottom:20px;}
 #page0 .ui-content .ui-btn span{padding:0px;}
-#page0 .ui-content .ui-btn-up-c{
-	background-color:transparent;
-	color:#060e0e;
-}
+#page0 .ui-content .ui-btn-up-c{background-color:transparent;color:#060e0e;}
+#page0 .ui-content .ui-btn-hover-c{background-color: rgb(175,15,10);background-color: -moz-linear-gradient(top,  rgb(175,15,10) 0%, rgb(227,6,19) 100%);background-color: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(175,15,10)), color-stop(100%,rgb(227,6,19)));background-color: -webkit-linear-gradient(top,  rgb(175,15,10) 0%,rgb(227,6,19) 100%);background-color: -o-linear-gradient(top,  rgb(175,15,10) 0%,rgb(227,6,19) 100%);background-color: -ms-linear-gradient(top,  rgb(175,15,10) 0%,rgb(227,6,19) 100%);background-color: linear-gradient(to bottom,  rgb(175,15,10) 0%,rgb(227,6,19) 100%);color:#fff;}
 
-#page0 .ui-content .ui-btn-hover-c{
-	background-color: rgb(175,15,10);
-	background-color: -moz-linear-gradient(top,  rgb(175,15,10) 0%, rgb(227,6,19) 100%);
-	background-color: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(175,15,10)), color-stop(100%,rgb(227,6,19)));
-	background-color: -webkit-linear-gradient(top,  rgb(175,15,10) 0%,rgb(227,6,19) 100%);
-	background-color: -o-linear-gradient(top,  rgb(175,15,10) 0%,rgb(227,6,19) 100%);
-	background-color: -ms-linear-gradient(top,  rgb(175,15,10) 0%,rgb(227,6,19) 100%);
-	background-color: linear-gradient(to bottom,  rgb(175,15,10) 0%,rgb(227,6,19) 100%);
-	color:#fff;
-}

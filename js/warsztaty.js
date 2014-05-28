@@ -7,7 +7,7 @@ var warsztaty = {};
 var feedFromServer = false;
 
 function openDeviceBrowser(externalLinkToOpen){
-	window.open(externalLinkToOpen,'_system','location=no');
+	var ref = window.open(externalLinkToOpen,'_system','location=no');
 }
 
 function supports_html5_storage() {
