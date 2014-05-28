@@ -53,7 +53,7 @@ a {
 .ui-header {
 	top:0;
 	padding-top:0px;
-	height:60px;
+	height:66px;
 	background: rgb(218,218,218); /* Old browsers */
 	background: -moz-linear-gradient(left, rgb(218,218,218) 0%, rgb(255,255,255) 50%, rgb(218,218,218) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb(218,218,218)), color-stop(50%,rgb(255,255,255)), color-stop(100%,rgb(218,218,218))); /* Chrome,Safari4+ */
