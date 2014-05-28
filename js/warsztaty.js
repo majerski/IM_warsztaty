@@ -7,7 +7,7 @@ var warsztaty = {};
 var feedFromServer = false;
 
 var ref = null;
-function openDeviceBrowser(externalLinkToOpen){
+function openDeviceBrowser(url){
 	try {
 		ref = window.open(url,'_system','location=no');
     } catch (err) {
