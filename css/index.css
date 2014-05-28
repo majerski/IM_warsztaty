@@ -64,8 +64,8 @@ a {
 	text-align:center;
 	border:0px;
 }
-#page1-header{height:74px;}
-.ui-header .logo{background:url('../img/ic-logo.png') center center no-repeat;border:0px;position:static!important;left:auto;top:auto!important;width:179px;height:66px;overflow:hidden;text-indent:-9999px;margin-top:3px;}
+#page1-header{height:71px;}
+.ui-header .logo{background:url('../img/ic-logo.png') center center no-repeat;border:0px;position:static!important;left:auto;top:auto!important;width:169px;height:66px;overflow:hidden;text-indent:-9999px;}
 .ui-header .start-navbar{height:5px;overflow:hidden;
 background: rgb(227,6,19); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgb(227,6,19) 0%, rgb(174,15,10) 100%); /* FF3.6+ */
@@ -98,7 +98,7 @@ background: rgb(227,6,19); /* Old browsers */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e30613', endColorstr='#ae0f0a',GradientType=0 ); /* IE6-9 */
 	border:1px solid #ae0f0a;
 }
-
+.ui-footer{border-color:#e30613;background-color:#af0f0a}
 .centerText,.warsztat{text-align:center;}
 .ui-grid-a .ui-block-a .ui-btn{margin-left: 0px;}
 .ui-grid-a .ui-block-b .ui-btn{margin-right: 0px;}
