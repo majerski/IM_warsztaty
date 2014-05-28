@@ -1,3 +1,5 @@
+$.mobile.defaultPageTransition = 'pop';
+
 $(window).load(function(){
 	$(".main-loader").hide();
 	$("#app").show();
