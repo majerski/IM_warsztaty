@@ -12,8 +12,8 @@
 	<body>
 		<div class="main-loader"></div>
 		<div id="app" style="display:none;">
-			<div id="page1" data-role="page">
-				<div data-role="header" data-id="page1-header" id="page1-header" data-position="fixed" class="ui-header">
+			<div id="page0" data-role="page">
+				<div data-role="header" data-id="page0-header" id="page0-header" data-position="fixed" class="ui-header">
 					<a href="#page1" data-role="button" class="logo">
 						<h1>InterCars</h1>
 					</a>
@@ -27,22 +27,49 @@
 					</div>
 				</div>
 				<div data-role="content">
-					<div id="menu">
-						<a data-icon="flat-menu" data-theme="d" href="#page2" data-role="button" data-prefetch="true">Warsztaty</a>
-						<a data-icon="flat-location" data-theme="g" href="#page3" data-role="button" data-prefetch="true">Mapa</a>
-						<a data-icon="flat-new" data-theme="f" href="#page4" data-role="button" data-prefetch="true">Wyceń naprawę</a>
+					<div class="ui-grid-a">
+						<div class="ui-block-a centerText"><a href="#page1" data-role="button" data-corners="false" class="ikona1">Aktualności</a></div>
+						<div class="ui-block-b centerText"><a href="#page2" data-role="button" data-corners="false" class="ikona2">Warsztaty</a></div>
+						<div class="ui-block-a centerText"><a href="#page3" data-role="button" data-corners="false" class="ikona3">Mapa<br />warsztatów</a></div>
+						<div class="ui-block-b centerText"><a href="#page4" data-role="button" data-corners="false" class="ikona4">Skalkuluj<br />naprawę</a></div>
 					</div>
 				</div>
 				<div data-role="footer" data-id="page1-footer" data-position="fixed" data-tap-toggle="false">
                     <div data-role="navbar">
                         <ul>
-							<li><a href="#" onclick="openDeviceBrowser('http://www.q-service.com.pl/')"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
-							<li><a href="http://www.q-service.com.pl/" target="_system"><img src="img/qservice-logo.png" alt="" /></a></li>
-							<li><a href="http://www.perfectservice.pl/" target="_self"><img src="img/perfectservice-logo.png" alt="" /></a></li>
+							<li><a href="http://www.q-service.com.pl/"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
+							<li><a href="http://www.q-service.com.pl/"><img src="img/qservice-logo.png" alt="" /></a></li>
+							<li><a href="http://www.perfectservice.pl/"><img src="img/perfectservice-logo.png" alt="" /></a></li>
                         </ul>
                     </div>
                 </div>
 			</div>
+			<div id="page1" data-role="page" data-add-back-btn="true">
+				<div data-role="header" data-id="page1-header" id="page1-header" data-position="fixed" class="ui-header">
+					<a href="#page0" data-role="button" class="logo">
+						<h1>InterCars</h1>
+					</a>
+					<div data-role="navbar" class="start-navbar">
+						<ul>
+							<li><a href="#">One</a></li>
+							<li><a href="#">Two</a></li>
+							<li><a href="#">Three</a></li>
+						</ul>
+					</div>
+				</div>
+				<div data-role="content">
+					Artykuły
+                </div>
+                <div data-role="footer" data-id="page3-footer" data-position="fixed" data-tap-toggle="false">
+                    <div data-role="navbar">
+                        <ul>
+                            <li><a href="#page2" data-icon="flat-menu" data-theme="d">Warsztaty</a></li>
+                            <li><a href="#page3" data-icon="flat-location">Mapa</a></li>
+                            <li><a href="#page4" data-icon="flat-new">Wyceń naprawę</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 			<div id="page2" data-role="page" data-add-back-btn="true">
 				<div data-role="header" data-id="page2-header" id="page2-header" data-position="fixed" class="ui-header">
 					<a href="#page1" data-role="button" class="logo">
