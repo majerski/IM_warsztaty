@@ -53,7 +53,7 @@ a {
 .ui-header {
 	top:0;
 	padding-top:0px;
-	height:97px;
+	height:60px;
 	background: rgb(218,218,218); /* Old browsers */
 	background: -moz-linear-gradient(left, rgb(218,218,218) 0%, rgb(255,255,255) 50%, rgb(218,218,218) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb(218,218,218)), color-stop(50%,rgb(255,255,255)), color-stop(100%,rgb(218,218,218))); /* Chrome,Safari4+ */
@@ -68,8 +68,7 @@ a {
 .ui-header .ui-title{
 	
 }
-.ui-header .logo {background:url('../img/ic-logo.png') center center no-repeat;border:0px;position:static!important;left:auto;top:auto!important;width:293px;height:82px;overflow:hidden;text-indent:-9999px;margin-top:3px;
-}
+.ui-header .logo{background:url('../img/ic-logo.png') center center no-repeat;border:0px;position:static!important;left:auto;top:auto!important;width:179px;height:50px;overflow:hidden;text-indent:-9999px;margin-top:3px;}
 .subnav .ui-btn {
 	border:0px;
 	background: rgb(227,6,19); /* Old browsers */
