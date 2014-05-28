@@ -13,20 +13,50 @@
 		<div class="main-loader"></div>
 		<div id="app" style="display:none;">
 			<div id="page1" data-role="page">
-				<div data-role="content" >
-					<div id="logoContainer" class="centerText">
-						<img src="img/logo.png" id="logo"  />
+				<div data-role="header" data-id="page1-header" id="page1-header" data-position="fixed" class="ui-header">
+					<a href="#page1" data-role="button" class="logo">
+						<h1>InterCars</h1>
+					</a>
+					<div data-role="navbar" class="subnav start-navbar">
+						<ul>
+							<li><a href="#">One</a></li>
+							<li><a href="#">Two</a></li>
+							<li><a href="#">Three</a></li>
+							<li><a href="#">Four</a></li>
+						</ul>
 					</div>
+				</div>
+				<div data-role="content" >
 					<div id="menu">
 						<a data-icon="flat-menu" data-theme="d" href="#page2" data-role="button" data-prefetch="true">Warsztaty</a>
 						<a data-icon="flat-location" data-theme="g" href="#page3" data-role="button" data-prefetch="true">Mapa</a>
 						<a data-icon="flat-new" data-theme="f" href="#page4" data-role="button" data-prefetch="true">Wyceń naprawę</a>
 					</div>
 				</div>
+				<!--
+				<div data-role="footer" data-id="page1-footer" data-position="fixed" data-tap-toggle="false">
+                    <div data-role="navbar">
+                        <ul>
+							<li><a href="http://www.q-service.com.pl/" target="_blank"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
+							<li><a href="http://www.q-service.com.pl/" target="_blank"><img src="img/qservice-logo.png" alt="" /></a></li>
+							<li><a href="http://www.perfectservice.pl/" target="_blank"><img src="img/perfectservice-logo.png" alt="" /></a></li>
+                        </ul>
+                    </div>
+                </div>
+				-->
 			</div>
 			<div id="page2" data-role="page" data-add-back-btn="true">
-				<div data-role="header" data-id="page2-header" id="page2-header" data-position="fixed" class="ui-header" data-theme="d">
-					<h1>Warsztaty</h1>
+				<div data-role="header" data-id="page2-header" id="page2-header" data-position="fixed" class="ui-header">
+					<a href="#page1" data-role="button" class="logo">
+						<h1>InterCars</h1>
+					</a>
+					<div data-role="navbar" class="start-navbar">
+						<ul>
+							<li><a href="#">One</a></li>
+							<li><a href="#">Two</a></li>
+							<li><a href="#">Three</a></li>
+						</ul>
+					</div>
 				</div>
 				<div data-role="content">
 					<div id="warsztaty_paginacja"></div>
@@ -35,7 +65,7 @@
 					</div>
 					<div id="warsztaty_lista_hidden" style="display:none"></div>
                 </div>
-                <div data-role="footer" data-id="page3-footer" data-position="fixed" data-tap-toggle="false" data-theme="c">
+                <div data-role="footer" data-id="page3-footer" data-position="fixed" data-tap-toggle="false">
                     <div data-role="navbar">
                         <ul>
                             <li><a href="#page2" data-icon="flat-menu" data-theme="d">Warsztaty</a></li>
@@ -104,6 +134,6 @@
         <script type="text/javascript">
 			app.initialize();
         </script>
-		<!--<script type="text/javascript" src="js/warsztaty.js"></script>-->
+		<script type="text/javascript" src="js/warsztaty.js"></script>
     </body>
 </html>
