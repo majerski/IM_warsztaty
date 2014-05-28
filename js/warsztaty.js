@@ -6,6 +6,10 @@ $(window).load(function(){
 var warsztaty = {};
 var feedFromServer = false;
 
+function openDeviceBrowser(externalLinkToOpen){
+	window.open(externalLinkToOpen,'_system','location=no');
+}
+
 function supports_html5_storage() {
   try {
     return 'localStorage' in window && window['localStorage'] !== null;
@@ -136,4 +140,5 @@ $(document).ready(function(){
 			window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 		}
 	});
+	$("[data-role=header]").fixedtoolbar({ updatePagePadding: true });
 });
