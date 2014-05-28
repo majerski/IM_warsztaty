@@ -53,7 +53,6 @@ a {
 .ui-header {
 	top:0;
 	padding-top:0px;
-	height:66px;
 	background: rgb(218,218,218); /* Old browsers */
 	background: -moz-linear-gradient(left, rgb(218,218,218) 0%, rgb(255,255,255) 50%, rgb(218,218,218) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb(218,218,218)), color-stop(50%,rgb(255,255,255)), color-stop(100%,rgb(218,218,218))); /* Chrome,Safari4+ */
@@ -65,10 +64,16 @@ a {
 	text-align:center;
 	border:0px;
 }
-.ui-header .ui-title{
-	
-}
 .ui-header .logo{background:url('../img/ic-logo.png') center center no-repeat;border:0px;position:static!important;left:auto;top:auto!important;width:179px;height:66px;overflow:hidden;text-indent:-9999px;margin-top:3px;}
+.ui-header .start-navbar{height:3px;overflow:hidden;
+background: rgb(227,6,19); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgb(227,6,19) 0%, rgb(174,15,10) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(227,6,19)), color-stop(100%,rgb(174,15,10))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgb(227,6,19) 0%,rgb(174,15,10) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgb(227,6,19) 0%,rgb(174,15,10) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgb(227,6,19) 0%,rgb(174,15,10) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgb(227,6,19) 0%,rgb(174,15,10) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e30613', endColorstr='#ae0f0a',GradientType=0 );}
 .subnav .ui-btn {
 	border:0px;
 	background: rgb(227,6,19); /* Old browsers */
@@ -80,6 +85,7 @@ a {
 	background: linear-gradient(to bottom,  rgb(227,6,19) 0%,rgb(174,15,10) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e30613', endColorstr='#ae0f0a',GradientType=0 );
 }
+.ui-content.start-content{}
 .ui-footer{
 	
 }
