@@ -5,6 +5,9 @@ var app = {
     },
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+		document.addEventListener("load", this.onLoad, false);
+		document.addEventListener("offline", this.onOffline, false);
+		document.addEventListener("online", this.onOnline, false);
     },
     initFastClick: function() {
         window.addEventListener('load', function() {
@@ -12,10 +15,7 @@ var app = {
         },false);
     },
     onDeviceReady: function() {
-		window.plugins.toast.showShortCenter('onDeviceReady()',function(a){},function(b){});
-		document.addEventListener("load", this.onLoad, false);
-		document.addEventListener("offline", this.onOffline, false);
-		document.addEventListener("online", this.onOnline, false);
+		window.plugins.toast.showShortTop('Online...',function(a){},function(b){});
     },
 	onLoad: function() {
         
@@ -24,6 +24,7 @@ var app = {
 		window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 	},
 	onOnline: function() {
+		window.plugins.toast.showShortBottom('Online...',function(a){},function(b){});
 		/*
 		var RSS = $.ajax({
 			url: "http://www.q-service.com.pl/rss/",
