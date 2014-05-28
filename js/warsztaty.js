@@ -6,13 +6,8 @@ $(window).load(function(){
 var warsztaty = {};
 var feedFromServer = false;
 
-var ref = null;
 function openDeviceBrowser(url){
-	try {
-		ref = window.open(url,'_system','location=no');
-    } catch (err) {
-		alert(err);
-	}
+	window.open(encodeURI(url),'_system','location=no');
 }
 function supports_html5_storage() {
   try {
