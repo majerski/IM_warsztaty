@@ -113,10 +113,10 @@ function warsztatyLista(){
 	}
 }
 
-var app = {
+var warsztaty = {};
+var feedFromServer = false;
 
-	var warsztaty = {};
-	var feedFromServer = false;
+var app = {
 	
     initialize: function() {
         this.bindEvents();
@@ -137,7 +137,8 @@ var app = {
 		
     },
 	onLoad: function() {
-        $(document).on('pagebeforeshow',function(){
+		/*
+		$(document).on('pagebeforeshow',function(){
 			$(this).find('a[data-rel=back]').buttonMarkup({
 				iconpos: 'notext'
 			});
@@ -156,6 +157,7 @@ var app = {
 				}
 			});
 		});
+		*/
     },
 	onOffline: function() {
 		window.plugins.toast.showLongCenter('Brak połączenia z internetem.',function(a){},function(b){});
