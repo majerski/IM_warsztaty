@@ -383,6 +383,7 @@ $(document).on('pageshow pagechange',function(){
 	$(".ui-page-active [data-role=header]").fixedtoolbar({updatePagePadding:true});
 });
 $(document).on('pageshow','#page3',function(){
+	alert('pageshow');
 	if(typeof GoogleMap != 'undefined'){
 		var gmap = new GoogleMap();
 		gmap.initialize();
