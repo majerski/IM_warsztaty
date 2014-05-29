@@ -212,7 +212,7 @@ function GoogleMap(){
 		var h = $(window).height() - 188;
 		$("#map_canvas").css({"height":h+"px"});
 		if(navigator.geolocation){
-			navigator.geolocation.getCurrentPosition(displayPosition,geolocationError);
+			navigator.geolocation.getCurrentPosition(displayPosition,geolocationError,{maximumAge:3000,timeout:5000,enableHighAccuracy:true});
 		} else {
 			geolocationError();
 		}
