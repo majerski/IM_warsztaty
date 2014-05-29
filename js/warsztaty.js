@@ -61,8 +61,50 @@ function renderWarsztat(id){
 			$("#warsztaty_content").append('<h2>'+item.konto+'</h2>');
 			$("#warsztaty_content").append('<p>'+item.ulica+'<br />'+item.kod.substr(0,2)+'-'+item.kod.substr(2)+' '+item.miasto+'</p>');
 			$("#warsztaty_content").append('<p>otwarte '+item.open+'<br />w soboty '+item.opensob+'</p>');
-			$("#warsztaty_content").append('<a class="warsztat-btn bell" onclick="dial(\''+item.kom+'\')">zadzwoń do warsztatu</a>');
-			$("#warsztaty_content").append('<a class="warsztat-btn paper_plane" href="geo:0,0?q='+encodeURI(item.miasto+', '+item.ulica)+'">nawiguj do warsztatu</a>');
+			
+			if(item.mechanika==1 || item.przeglad==1 || item.wulkanizacja==1 || item.klimatyzacja==1 || item.geometria==1 || item.diagnostyka==1 || item.elektryka==1 || item.spaliny==1 || item.blacharstwo==1 || item.lakiernictwo==1 || item.szyby==1) {
+				var list = document.createElement('ul');
+				list.style.marginTop = "0px";
+				$("#warsztaty_content").append('<p style="margin-bottom:0px">Specjalizacje:</p>');
+				if(item.mechanika==1){
+					var li=document.createElement('li');li.innerHTML='mechanika';list.appendChild(li);
+				}
+				if(item.blacharstwo==1){
+					var li=document.createElement('li');li.innerHTML='blacharstwo';list.appendChild(li);
+				}
+				if(item.lakiernictwo==1){
+					var li=document.createElement('li');li.innerHTML='lakiernictwo';list.appendChild(li);
+				}
+				
+				if(item.przeglad==1){
+					var li=document.createElement('li');li.innerHTML='przeglądy';list.appendChild(li);
+				}
+				if(item.diagnostyka==1){
+					var li=document.createElement('li');li.innerHTML='diagnostyka';list.appendChild(li);
+				}
+				if(item.wulkanizacja==1){
+					var li=document.createElement('li');li.innerHTML='wulkanizacja';list.appendChild(li);
+				}
+				if(item.geometria==1){
+					var li=document.createElement('li');li.innerHTML='geometria kół';list.appendChild(li);
+				}
+				if(item.spaliny==1){
+					var li=document.createElement('li');li.innerHTML='układy wydechowe';list.appendChild(li);
+				}
+				if(item.elektryka==1){
+					var li=document.createElement('li');li.innerHTML='elektryka';list.appendChild(li);
+				}
+				if(item.klimatyzacja==1){
+					var li=document.createElement('li');li.innerHTML='klimatyzacje';list.appendChild(li);
+				}
+				if(item.szyby==1){
+					var li=document.createElement('li');li.innerHTML='szyby';list.appendChild(li);
+				}
+				$("#warsztaty_content").append(list);
+			}
+			
+			$("#warsztaty_content").append('<a class="warsztat-btn bell" onclick="dial(\''+item.kom+'\')">zadzwoń</a>');
+			$("#warsztaty_content").append('<a class="warsztat-btn paper_plane" href="geo:0,0?q='+encodeURI(item.miasto+', '+item.ulica)+'">nawiguj</a>');
 			$("#warsztaty_content").append('<a class="warsztat-btn map" href="#page3" onclick="showPoint('+item.lat+','+item.lng+')">pokaż na mapie</a>');
 			$('#warsztat').page();
 		}
