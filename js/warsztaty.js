@@ -127,6 +127,7 @@ function warsztatyLista(search){
 	if(!search) {
 		use_warsztaty = warsztaty;
 	}
+	use_warsztaty = filterValuePart(use_warsztaty,'');
 	var len = Object.keys(use_warsztaty).length;
 	if( len > 0 ) {
 		$('#warsztaty_lista').empty();
@@ -156,8 +157,8 @@ function warsztatyLista(search){
 		});
 	} else {
 		if(search) {
-			$('#warsztaty_lista').empty().html('Brak warsztatów.');;
-			
+			$('#warsztaty_lista').empty().html('<p>Brak warsztatów.</p>');
+			$('.warsztaty_paginacja').pagination('destroy');
 		} else {
 			window.plugins.toast.showLongCenter('Nie udało się wgrać listy warsztatów. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
 		}
@@ -351,8 +352,10 @@ $(document).on('pageshow pagechange',function(){
 $(document).ready(function(){
 	checkVersion();
 	warsztatyLista(false);
-	var gmap = new GoogleMap();
-	gmap.initialize();
+	if(typeof GoogleMap != 'undefined'){
+		var gmap = new GoogleMap();
+		gmap.initialize();
+	}
 	$(".refresh_connection").bind("click",function(){
 		if(navigator.onLine) {
 			checkVersion();
