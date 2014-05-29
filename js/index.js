@@ -24,16 +24,6 @@ var app = {
 		window.plugins.toast.showLongCenter('Brak połączenia z internetem.',function(a){},function(b){});
 	},
 	onOnline: function() {
-		/*
-		var RSS = $.ajax({
-			url: "http://www.q-service.com.pl/rss/",
-			type: "GET",
-			dataType: "json",
-			async: false
-		});
-		RSS.done(function(response){
-			alert(response);
-		});
-		*/
+		window.plugins.toast.showLongCenter('Nawiązano połączenie z internetem.',function(a){},function(b){});
     }
 };

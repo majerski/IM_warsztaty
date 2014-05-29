@@ -141,5 +141,5 @@ $(document).ready(function(){
 			window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 		}
 	});
-	$("[data-role=header]").fixedtoolbar({ updatePagePadding: true });
+	$("[data-role=header]").fixedtoolbar({updatePagePadding:true});
 });
