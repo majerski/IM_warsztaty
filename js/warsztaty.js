@@ -61,7 +61,6 @@ function renderWarsztat(id){
 			$("#warsztaty_content").append('<h2>'+item.konto+'</h2>');
 			$("#warsztaty_content").append('<p>'+item.ulica+'<br />'+item.kod.substr(0,2)+'-'+item.kod.substr(2)+' '+item.miasto+'</p>');
 			$("#warsztaty_content").append('<p>otwarte '+item.open+'<br />w soboty '+item.opensob+'</p>');
-			
 			if(item.mechanika==1 || item.przeglad==1 || item.wulkanizacja==1 || item.klimatyzacja==1 || item.geometria==1 || item.diagnostyka==1 || item.elektryka==1 || item.spaliny==1 || item.blacharstwo==1 || item.lakiernictwo==1 || item.szyby==1) {
 				var list = document.createElement('ul');
 				list.style.marginTop = "0px";
@@ -102,8 +101,7 @@ function renderWarsztat(id){
 				}
 				$("#warsztaty_content").append(list);
 			}
-			
-			$("#warsztaty_content").append('<a class="warsztat-btn bell" onclick="dial(\''+item.kom+'\')">zadzwoń</a>');
+			$("#warsztaty_content").append('<a class="warsztat-btn bell" onclick="dial(\''+item.kom+'\')">zadzwoń <small>(+48 '+item.kom.substr(0,3)+' '+item.kom.substr(3,3)+' '+item.kom.substr(6,3)+')</small></a>');
 			$("#warsztaty_content").append('<a class="warsztat-btn paper_plane" href="geo:0,0?q='+encodeURI(item.miasto+', '+item.ulica)+'">nawiguj</a>');
 			$("#warsztaty_content").append('<a class="warsztat-btn map" href="#page3" onclick="showPoint('+item.lat+','+item.lng+')">pokaż na mapie</a>');
 			$('#warsztat').page();
@@ -205,7 +203,7 @@ function warsztatyLista(search){
 	}
 }
 
-/*
+
 var map;
 var startingLatitude = 52.069347;
 var startingLongitude = 19.480204;
@@ -379,7 +377,6 @@ function showGeolocationForm(){
 function showPoint(lat,lng){
 	
 }
-*/
 
 $(document).on('pagebeforeshow',function(){
 	$(this).find('a[data-rel=back]').buttonMarkup({
@@ -389,13 +386,15 @@ $(document).on('pagebeforeshow',function(){
 $(document).on('pageshow pagechange',function(){
 	$(".ui-page-active [data-role=header]").fixedtoolbar({updatePagePadding:true});
 });
-$(document).ready(function(){
-	checkVersion();
-	warsztatyLista(false);
+$(document).on('pageshow','#page3',function(){
 	if(typeof GoogleMap != 'undefined'){
 		var gmap = new GoogleMap();
 		gmap.initialize();
 	}
+});
+$(document).ready(function(){
+	checkVersion();
+	warsztatyLista(false);
 	$(".refresh_connection").bind("click",function(){
 		if(navigator.onLine) {
 			checkVersion();
