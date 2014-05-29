@@ -164,6 +164,7 @@ function warsztatyLista(search){
 	}
 }
 
+/*
 var map;
 var startingLatitude = 52.069347;
 var startingLongitude = 19.480204;
@@ -337,6 +338,7 @@ function showGeolocationForm(){
 function showPoint(lat,lng){
 	
 }
+*/
 
 $(document).on('pagebeforeshow',function(){
 	$(this).find('a[data-rel=back]').buttonMarkup({
