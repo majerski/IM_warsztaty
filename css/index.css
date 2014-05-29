@@ -55,14 +55,14 @@ ul.simple-pagination {list-style: none;}
 .warsztat .ui-li-heading{margin:0px}
 .warsztat .ui-btn-text span{font-size:13px;text-transform:capitalize;color:#8a8a8a;}
 #warsztaty_content p{font-size:14px;}
-#warsztaty_content .warsztat-btn{display:inline-block;height:60px;line-height:60px;color:#060e0e;font-size:16px;padding:0 5px 0 74px;width:160px;}
-#warsztaty_content .warsztat-btn.bell{background-image:url('../img/bell.png');background-position:5px 5px;background-repeat:no-repeat;}
-#warsztaty_content .warsztat-btn.paper_plane{background-image:url('../img/paper_plane.png');background-position:5px 5px;background-repeat:no-repeat;}
-#warsztaty_content .warsztat-btn.map{background-image:url('../img/map.png');background-position:5px 5px;background-repeat:no-repeat;}
+#warsztaty_content .warsztat-btn{display:block;height:60px;line-height:60px;color:#060e0e;font-size:16px;padding:0 5px 0 50px;background-color:#dbdbdb;margin-bottom:1px;text-align:center;}
+#warsztaty_content .warsztat-btn.bell{background-image:url('../img/bell.png');background-position:10% 5px;background-repeat:no-repeat;}
+#warsztaty_content .warsztat-btn.paper_plane{background-image:url('../img/paper_plane.png');background-position:10% 5px;background-repeat:no-repeat;}
+#warsztaty_content .warsztat-btn.map{background-image:url('../img/map.png');background-position:10% 5px;background-repeat:no-repeat;}
 #warsztaty_content .warsztat-btn:active{color:#fff;background-color:#d00c18;background-color:-moz-linear-gradient(top,#d00c18 1%,#861410 100%);background-color:-webkit-gradient(linear,left top,left bottom,color-stop(1%,#d00c18),color-stop(100%,#861410));background-color:-webkit-linear-gradient(top,#d00c18 1%,#861410 100%);background-color:-o-linear-gradient(top,#d00c18 1%,#861410 100%);background-color:-ms-linear-gradient(top,#d00c18 1%,#861410 100%);background-color:linear-gradient(to bottom,#d00c18 1%,#861410 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d00c18', endColorstr='#861410', GradientType=0)}
-#warsztaty_content .warsztat-btn.bell:active{background-image:url('../img/bell-active.png');background-position:5px 5px;background-repeat:no-repeat;}
-#warsztaty_content .warsztat-btn.paper_plane:active{background-image:url('../img/paper_plane-active.png');background-position:5px 5px;background-repeat:no-repeat;}
-#warsztaty_content .warsztat-btn.map:active{background-image:url('../img/map-active.png');background-position:5px 5px;background-repeat:no-repeat;}
+#warsztaty_content .warsztat-btn.bell:active{background-image:url('../img/bell-active.png');background-position:10% 5px;background-repeat:no-repeat;}
+#warsztaty_content .warsztat-btn.paper_plane:active{background-image:url('../img/paper_plane-active.png');background-position:10% 5px;background-repeat:no-repeat;}
+#warsztaty_content .warsztat-btn.map:active{background-image:url('../img/map-active.png');background-position:10% 5px;background-repeat:no-repeat;}
 
 #map_canvas{width:100%;height:100%;}
 

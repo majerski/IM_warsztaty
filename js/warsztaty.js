@@ -1,5 +1,3 @@
-localStorage.clear();
-
 $.mobile.defaultPageTransition = 'none';
 
 $(window).load(function(){
@@ -63,8 +61,8 @@ function renderWarsztat(id){
 			$("#warsztaty_content").append('<h2>'+item.konto+'</h2>');
 			$("#warsztaty_content").append('<p>'+item.ulica+'<br />'+item.kod.substr(0,2)+'-'+item.kod.substr(2)+' '+item.miasto+'</p>');
 			$("#warsztaty_content").append('<p>otwarte '+item.open+'<br />w soboty '+item.opensob+'</p>');
-			$("#warsztaty_content").append('<a class="warsztat-btn bell" onclick="dial(\''+item.kom+'\')">zadzwoń do warsztatu</a><br />');
-			$("#warsztaty_content").append('<a class="warsztat-btn paper_plane" href="geo:0,0?q='+encodeURI(item.miasto+', '+item.ulica)+'">nawiguj do warsztatu</a><br />');
+			$("#warsztaty_content").append('<a class="warsztat-btn bell" onclick="dial(\''+item.kom+'\')">zadzwoń do warsztatu</a>');
+			$("#warsztaty_content").append('<a class="warsztat-btn paper_plane" href="geo:0,0?q='+encodeURI(item.miasto+', '+item.ulica)+'">nawiguj do warsztatu</a>');
 			$("#warsztaty_content").append('<a class="warsztat-btn map" href="#page3" onclick="showPoint('+item.lat+','+item.lng+')">pokaż na mapie</a>');
 			$('#warsztat').page();
 		}
