@@ -20,7 +20,9 @@ function supports_html5_storage() {
 }
 function pageInit(){
     var new_content = $('#warsztaty_lista_hidden div.warsztat:eq(0)').clone();
-    $('#warsztaty_lista').empty().append(new_content);
+    $('#warsztaty_lista').empty();
+	$('#warsztaty_lista').append('<input type="search" placeholder="szukaj" />');
+	$('#warsztaty_lista').append(new_content);
 	$('#page2').page();
 	$('#warsztaty_lista ul').listview();
     return false;
@@ -38,8 +40,9 @@ function renderWarsztat(id){
 			//console.log(warsztaty[i]);
 			$("#warsztaty_content").empty();
 			$("#warsztaty_content").append('<h2>'+warsztaty[i].konto+'</h2>');
-			$("#warsztaty_content").append('<p>'+warsztaty[i].ulica+'<br />'+warsztaty[i].kod.substr(0,2)+'-'+warsztaty[i].kod.substr(3)+' '+warsztaty[i].miasto+'</p>');
-			$("#warsztaty_content").append('<button data-icon="grid" data-theme="d" class="ui-btn-hidden" data-disabled="false" onclick="dial(\''+warsztaty[i].kom+'\')">Zadzwoń</button>');
+			$("#warsztaty_content").append('<p>'+warsztaty[i].ulica+'<br />'+warsztaty[i].kod.substr(0,2)+'-'+warsztaty[i].kod.substr(2)+' '+warsztaty[i].miasto+'</p>');
+			$("#warsztaty_content").append('<a class="dial" onclick="dial(\''+warsztaty[i].kom+'\')">Zadzwoń</a>');
+			$("#warsztaty_content").append('<div id="map_canvas"></div>');
 			$('#warsztat button').button();
 			$('#warsztat').page();
 		}
