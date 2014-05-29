@@ -5,7 +5,9 @@ $(window).load(function(){
 	$("#app").show();
 });
 
-var warsztaty = {};
+var warsztaty = [];
+var _warsztaty = []; // po szukaniu
+var use_warsztaty = [];
 var feedFromServer = false;
 
 function openDeviceBrowser(url){
@@ -21,7 +23,6 @@ function supports_html5_storage() {
 function pageInit(){
     var new_content = $('#warsztaty_lista_hidden div.warsztat:eq(0)').clone();
     $('#warsztaty_lista').empty();
-	$('#warsztaty_lista').append('<input type="search" placeholder="szukaj" />');
 	$('#warsztaty_lista').append(new_content);
 	$('#page2').page();
 	$('#warsztaty_lista ul').listview();
@@ -33,20 +34,40 @@ function pageClick(page_index, jq){
 	$('#warsztaty_lista ul').listview();
     return false;
 }
+function warsztaty_filter(value){
+	_warsztaty = filterValuePart(warsztaty,value);
+	warsztatyLista(true);
+}
+function filterValuePart(arr,part) {
+	var emptyArr = new Array();
+	$.each(arr,function(i,item){
+		if( (String(item.konto).toLowerCase().indexOf(part) > -1) || (String(item.miasto).toLowerCase().indexOf(part) > -1) || (String(item.ulica).toLowerCase().indexOf(part) > -1) ) {
+			emptyArr.push(item);
+		}
+	});
+	return emptyArr;
+};
+function sortByKey(array, key) {
+    return array.sort(function(a, b) {
+        var x = a[key]; var y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+};
 function renderWarsztat(id){
-	var len = Object.keys(warsztaty).length;
-	for(var i=1; i<=len; i++) {
+	var len = Object.keys(use_warsztaty).length;
+	$.each(use_warsztaty,function(i,item){
 		if(i==id){
-			//console.log(warsztaty[i]);
 			$("#warsztaty_content").empty();
-			$("#warsztaty_content").append('<h2>'+warsztaty[i].konto+'</h2>');
-			$("#warsztaty_content").append('<p>'+warsztaty[i].ulica+'<br />'+warsztaty[i].kod.substr(0,2)+'-'+warsztaty[i].kod.substr(2)+' '+warsztaty[i].miasto+'</p>');
-			$("#warsztaty_content").append('<a class="dial" onclick="dial(\''+warsztaty[i].kom+'\')">Zadzwoń</a>');
+			$("#warsztaty_content").append('<h2>'+item.konto+'</h2>');
+			$("#warsztaty_content").append('<p>'+item.ulica+'<br />'+item.kod.substr(0,2)+'-'+item.kod.substr(2)+' '+item.miasto+'</p>');
+			$("#warsztaty_content").append('<p>otwarte '+item.open+'<br />w soboty '+item.opensob+'</p>');
+			$("#warsztaty_content").append('<a class="warsztat-btn dial" onclick="dial(\''+item.kom+'\')">zadzwoń do warsztatu</a>');
+			$("#warsztaty_content").append('<a class="warsztat-btn navigate" href="geo:0,0?q='+encodeURI(item.miasto+', '+item.ulica)+'">nawiguj do warsztatu</a>');
 			$("#warsztaty_content").append('<div id="map_canvas"></div>');
 			$('#warsztat button').button();
 			$('#warsztat').page();
 		}
-	}
+	});
 }
 function dial(number){
 	window.location.href = 'tel:+48'+number;
@@ -80,7 +101,11 @@ function checkVersion(){
 		}
 	});
 }
-function warsztatyLista(){
+function warsztatyLista(search){
+	if(search) {
+		feedFromServer = false;
+		use_warsztaty = _warsztaty;
+	}
 	if(feedFromServer) {
 		var ajaxFeed = $.ajax({
 			url: "http://arcontact.pl/warsztaty_inter_cars/feed.php",
@@ -98,22 +123,26 @@ function warsztatyLista(){
 			}
 		});
 	}
-	var len = Object.keys(warsztaty).length;
+	if(!search) {
+		use_warsztaty = warsztaty;
+	}
+	var len = Object.keys(use_warsztaty).length;
 	if( len > 0 ) {
 		$('#warsztaty_lista').empty();
-		$(".main_loader").show();
 		var out = '<div class="warsztat"><ul data-ajax="false" data-inset="true">';
 		var per_page = 30;
 		// wstawić pierwszy najbliższy warsztat - jest miejsce akurat dla jednego
-		for(var i=1; i<=len; i++) {
-			if(i%per_page==0){
+		use_warsztaty = sortByKey(use_warsztaty, 'miasto');
+		$.each(use_warsztaty,function(i,item){
+			if(i%per_page==0 && i!=0){
 				out = out + '</ul></div><div class="warsztat"><ul data-ajax="false" data-inset="true">';
 			}
-			out = out + '<li><a href="#warsztat" data-ajax="false" onclick="renderWarsztat('+i+')" data-transition="pop"><h6>' + warsztaty[i].konto + '</h6><span>' + warsztaty[i].miasto.toLowerCase() + ', ' + warsztaty[i].ulica.toLowerCase() + '</span></a></li>';
-		}
+			out = out + '<li><a href="#warsztat" data-ajax="false" onclick="renderWarsztat('+i+')" data-transition="pop"><h6>' + item.konto + '</h6><span>' + item.miasto.toLowerCase() + ', ' + item.ulica.toLowerCase() + '</span></a></li>';
+		});
 		out = out + '</div>';
+		
 		$("#warsztaty_lista_hidden").html(out);
-		$('.warsztaty_paginacja').pagination({
+		$('.warsztaty_paginacja').pagination('destroy').pagination({
 			items: len,
 			itemsOnPage: per_page,
 			cssStyle: 'light-theme',
@@ -125,7 +154,12 @@ function warsztatyLista(){
 			onInit: pageInit
 		});
 	} else {
-		window.plugins.toast.showLongCenter('Nie udało się wgrać listy warsztatów. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
+		if(search) {
+			$('#warsztaty_lista').empty().html('Brak warsztatów.');;
+			
+		} else {
+			window.plugins.toast.showLongCenter('Nie udało się wgrać listy warsztatów. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
+		}
 	}
 }
 $(document).on('pagebeforeshow',function(){
@@ -133,16 +167,18 @@ $(document).on('pagebeforeshow',function(){
         iconpos: 'notext'
     });
 });
+$(document).on('pageshow pagechange',function(){
+	$(".ui-page-active [data-role=header]").fixedtoolbar({updatePagePadding:true});
+});
 $(document).ready(function(){
 	checkVersion();
-	warsztatyLista();
+	warsztatyLista(false);
 	$(".refresh_connection").bind("click",function(){
 		if(navigator.onLine) {
 			checkVersion();
-			warsztatyLista();
+			warsztatyLista(false);
 		} else {
 			window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 		}
 	});
-	$("[data-role=header]").fixedtoolbar({updatePagePadding:true});
 });

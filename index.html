@@ -85,9 +85,10 @@
 						</ul>
 					</div>
 				</div>
-				<div data-role="content">
+				<div data-role="content" id="warsztaty_container">
 					<div class="warsztaty_paginacja"></div>
-                    <div id="warsztaty_lista">
+                    <input type="search" placeholder="nazwa, miasto lub ulica" id="warsztat_search" onchange="return warsztaty_filter(this.value);" />
+					<div id="warsztaty_lista">
 						<div class="centerText"><a href="#" data-role="button" data-theme="e" data-inline="true" data-icon="refresh" data-iconpos="top" class="refresh_connection">odśwież połączenie</a></div>
 					</div>
 					<div class="warsztaty_paginacja"></div>
