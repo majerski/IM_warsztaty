@@ -61,8 +61,7 @@ function renderWarsztat(id){
 			$("#warsztaty_content").append('<h2>'+item.konto+'</h2>');
 			$("#warsztaty_content").append('<p>'+item.ulica+'<br />'+item.kod.substr(0,2)+'-'+item.kod.substr(2)+' '+item.miasto+'</p>');
 			$("#warsztaty_content").append('<p>otwarte '+item.open+'<br />w soboty '+item.opensob+'</p>');
-			$("#warsztaty_content").append('<a class="warsztat-btn bell" onclick="dial(\''+item.kom+'\')">zadzwoń do warsztatu</a>');
-			$("#warsztaty_content").append('<a class="warsztat-btn paper_plane" href="geo:0,0?q='+encodeURI(item.miasto+', '+item.ulica)+'">nawiguj do warsztatu</a>');
+			$("#warsztaty_content").append('<a class="warsztat-btn bell" onclick="dial(\''+item.kom+'\')">zadzwoń do warsztatu</a><br /><a class="warsztat-btn paper_plane" href="geo:0,0?q='+encodeURI(item.miasto+', '+item.ulica)+'">nawiguj do warsztatu</a>');
 			$("#warsztaty_content").append('<div id="map_canvas" class="map"><div class="error">nie udało się załadować mapy...<br /><br /><a href="#" data-role="button" data-theme="c" data-inline="true" data-icon="refresh" data-iconpos="top" class="refresh_map">odśwież</a></div></div>');
 			$('#warsztaty_content button').button();
 			$('#warsztat').page();

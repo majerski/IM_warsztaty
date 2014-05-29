@@ -55,7 +55,7 @@ ul.simple-pagination {list-style: none;}
 .warsztat .ui-li-heading{margin:0px}
 .warsztat .ui-btn-text span{font-size:13px;text-transform:capitalize;color:#8a8a8a;}
 #warsztaty_content p{font-size:14px;}
-#warsztaty_content .warsztat-btn{display:block;height:60px;line-height:60px;padding-left:60px;color:#060e0e;font-size:16px;}
+#warsztaty_content .warsztat-btn{display:inline-block;height:60px;line-height:60px;color:#060e0e;font-size:16px;padding:0 5px 0 60px;}
 #warsztaty_content .warsztat-btn.bell{background-image:url('../img/bell.png');background-position:12px 5px;background-repeat:no-repeat;}
 #warsztaty_content .warsztat-btn.paper_plane{background-image:url('../img/paper_plane.png');background-position:5px 5px;background-repeat:no-repeat;}
 #warsztaty_content .warsztat-btn:active{color:#fff;
