@@ -24,6 +24,6 @@ var app = {
 		window.plugins.toast.showLongCenter('Brak połączenia z internetem.',function(a){},function(b){});
 	},
 	onOnline: function() {
-		window.plugins.toast.showLongCenter('Nawiązano połączenie z internetem.',function(a){},function(b){});
+		window.plugins.toast.showShortBottom('Nawiązano połączenie z internetem.',function(a){},function(b){});
     }
 };

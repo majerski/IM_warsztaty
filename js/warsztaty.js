@@ -100,13 +100,13 @@ function warsztatyLista(){
 		$('#warsztaty_lista').empty();
 		$(".main_loader").show();
 		var out = '<div class="warsztat"><ul data-ajax="false" data-inset="true">';
-		var per_page = 11;
+		var per_page = 30;
 		// wstawić pierwszy najbliższy warsztat - jest miejsce akurat dla jednego
 		for(var i=1; i<=len; i++) {
 			if(i%per_page==0){
 				out = out + '</ul></div><div class="warsztat"><ul data-ajax="false" data-inset="true">';
 			}
-			out = out + '<li><a href="#warsztat" data-ajax="false" onclick="renderWarsztat('+i+')" data-transition="pop">' + warsztaty[i].konto + '</a></li>';
+			out = out + '<li><a href="#warsztat" data-ajax="false" onclick="renderWarsztat('+i+')" data-transition="pop"><h6>' + warsztaty[i].konto + '</h6><span>' + warsztaty[i].miasto.toLowerCase() + '</span></a></li>';
 		}
 		out = out + '</div>';
 		$("#warsztaty_lista_hidden").html(out);
@@ -122,7 +122,7 @@ function warsztatyLista(){
 			onInit: pageInit
 		});
 	} else {
-		//window.plugins.toast.showShortCenter('Nie udało się wgrać listy warsztatów. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
+		window.plugins.toast.showLongCenter('Nie udało się wgrać listy warsztatów. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
 	}
 }
 $(document).on('pagebeforeshow',function(){
