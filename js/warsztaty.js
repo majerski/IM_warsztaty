@@ -220,6 +220,7 @@ function GoogleMap(){
 		*/
 	}
 }
+/*
 function displayPosition(pos){
 	var mylat = pos.coords.latitude;
 	var mylong = pos.coords.longitude;
@@ -345,7 +346,6 @@ function geolocationError() {
 	}
 }
 function showGeolocationForm(){
-	/*
 	$(".ui-page-active .right-sidebar .sidebar-arrow p").html('<div class="input-outer"><form id="geolocation-form" onsubmit="return false;"><input type="text" id="address" placeholder="Wprowadź adres (autouzupełnianie)" /></form></div>');
 	var input = $(".ui-page-active #address").get(0);
 	var autocomplete = new google.maps.places.Autocomplete(input);
@@ -376,8 +376,8 @@ function showGeolocationForm(){
 		pos.coords.longitude = place.geometry.location.lng();
 		displayPosition(pos);
 	});
-	*/
 }
+*/
 function showPoint(lat,lng){
 	
 }
