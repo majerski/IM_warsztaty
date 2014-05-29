@@ -212,17 +212,19 @@ function GoogleMap(){
 		var h = $(window).height() - 188;
 		$("#map_canvas").css({"height":h+"px"});
 		if(navigator.geolocation){
-			alert('navigator.geolocation');
-			navigator.geolocation.getCurrentPosition(displayPosition,geolocationError,{maximumAge:10000,timeout:10000,enableHighAccuracy:false});
+			navigator.geolocation.getCurrentPosition(displayPosition,positionError);
 		} else {
-			alert('no navigator.geolocation');
 			geolocationError();
 		}
 		
 	}
 }
+function positionError(a,b,c){
+	alert(a);
+	alert(b);
+	alert(c);
+}
 function displayPosition(pos){
-	alert('displayPosition');
 	var mylat = pos.coords.latitude;
 	var mylong = pos.coords.longitude;
 	var latlng = new google.maps.LatLng(mylat,mylong);
@@ -308,7 +310,6 @@ function displayPosition(pos){
 	map.fitBounds(bounds);
 }
 function geolocationError() {
-	alert('geolocationError');
 	//$(".ui-page-active .right-sidebar .sidebar-arrow p").html('Nie można ustalić pozycji - <a onclick="showGeolocationForm();">ustal ręcznie</a>');
 	var mylat = startingLatitude;
 	var mylong = startingLongitude;
@@ -348,7 +349,7 @@ function geolocationError() {
 	}
 }
 function showGeolocationForm(){
-	$(".ui-page-active .right-sidebar .sidebar-arrow p").html('<div class="input-outer"><form id="geolocation-form" onsubmit="return false;"><input type="text" id="address" placeholder="Wprowadź adres (autouzupełnianie)" /></form></div>');
+	//$(".ui-page-active .right-sidebar .sidebar-arrow p").html('<div class="input-outer"><form id="geolocation-form" onsubmit="return false;"><input type="text" id="address" placeholder="Wprowadź adres (autouzupełnianie)" /></form></div>');
 	var input = $(".ui-page-active #address").get(0);
 	var autocomplete = new google.maps.places.Autocomplete(input);
 	autocomplete.bindTo('bounds', map);
