@@ -1,3 +1,5 @@
+localStorage.clear();
+
 $.mobile.defaultPageTransition = 'none';
 
 $(window).load(function(){
@@ -61,9 +63,9 @@ function renderWarsztat(id){
 			$("#warsztaty_content").append('<h2>'+item.konto+'</h2>');
 			$("#warsztaty_content").append('<p>'+item.ulica+'<br />'+item.kod.substr(0,2)+'-'+item.kod.substr(2)+' '+item.miasto+'</p>');
 			$("#warsztaty_content").append('<p>otwarte '+item.open+'<br />w soboty '+item.opensob+'</p>');
-			$("#warsztaty_content").append('<a class="warsztat-btn bell" onclick="dial(\''+item.kom+'\')">zadzwoń do warsztatu</a><br /><a class="warsztat-btn paper_plane" href="geo:0,0?q='+encodeURI(item.miasto+', '+item.ulica)+'">nawiguj do warsztatu</a>');
-			$("#warsztaty_content").append('<div id="map_canvas" class="map"><div class="error">nie udało się załadować mapy...<br /><br /><a href="#" data-role="button" data-theme="c" data-inline="true" data-icon="refresh" data-iconpos="top" class="refresh_map">odśwież</a></div></div>');
-			$('#warsztaty_content button').button();
+			$("#warsztaty_content").append('<a class="warsztat-btn bell" onclick="dial(\''+item.kom+'\')">zadzwoń do warsztatu</a><br />');
+			$("#warsztaty_content").append('<a class="warsztat-btn paper_plane" href="geo:0,0?q='+encodeURI(item.miasto+', '+item.ulica)+'">nawiguj do warsztatu</a><br />');
+			$("#warsztaty_content").append('<a class="warsztat-btn map" href="#page3" onclick="showPoint('+item.lat+','+item.lng+')">pokaż na mapie</a>');
 			$('#warsztat').page();
 		}
 	});
@@ -161,6 +163,181 @@ function warsztatyLista(search){
 		}
 	}
 }
+
+var map;
+var startingLatitude = 52.069347;
+var startingLongitude = 19.480204;
+function GoogleMap(){
+	this.initialize = function(){
+		var h = $(window).height() - 188;
+		$("#map_canvas").css({"height":h+"px"});
+		if(navigator.geolocation){
+			navigator.geolocation.getCurrentPosition(displayPosition,geolocationError);
+		} else {
+			geolocationError();
+		}
+	}
+}
+function displayPosition(pos){
+	var mylat = pos.coords.latitude;
+	var mylong = pos.coords.longitude;
+	var latlng = new google.maps.LatLng(mylat,mylong);
+	var myOptions = {
+		zoom: 12,
+		center: latlng,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		mapTypeControl: false,
+		panControl: false,
+		zoomControl: true,
+		zoomControlOptions: {
+			style: google.maps.ZoomControlStyle.LARGE,
+			position: google.maps.ControlPosition.TOP_RIGHT
+		},
+		scaleControl: true,
+		streetViewControl: false
+	};
+	map = new google.maps.Map($(".ui-page-active #map_canvas")[0], myOptions);
+	var l = Object.keys(use_warsztaty).length;
+	for(var i=0; i<l; i++){
+		createMarker(use_warsztaty[i]);
+	}
+	function createMarker(location) {
+		var latlng = new google.maps.LatLng(parseFloat(location.lat), parseFloat(location.lng));
+		var marker = new google.maps.Marker({
+			map: map,
+			position: latlng,
+			icon: "data:image/png;base64,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"
+		});
+		var infowindow = new google.maps.InfoWindow({
+			content: '<div class="noscrollbar">' + location.content + '<br /><br /><a href="geo:0,0?q='+encodeURI(location.address)+'" class="ui-btn ui-mini ui-icon-location ui-btn-icon-left ui-corner-all">pokaż w nawigacji</a></div>'
+		});
+		google.maps.event.addListener(marker, 'click', function() {
+			infowindow.open(map, this);
+		});
+	}
+	var marker = new google.maps.Marker({
+		position: latlng,
+		map: map,
+		title: 'Twoja lokalizacja'
+	});
+	function closestMarker(position,use_warsztaty){
+		var closestMarker = -1;
+		var closestDistance = Number.MAX_VALUE;
+		var len1 = Object.keys(use_warsztaty).length;
+		for(var i=0; i<len1; i++){
+			var locationLatLng = new google.maps.LatLng(parseFloat(use_warsztaty[i].lat), parseFloat(use_warsztaty[i].lng));
+			var dist = google.maps.geometry.spherical.computeDistanceBetween(position, locationLatLng);
+			if(dist < closestDistance){
+				closestMarker = i;
+				closestDistance = dist;
+			}
+		}
+		return closestMarker;
+	}
+	var closestMarker = closestMarker(latlng, use_warsztaty);
+	var path = new google.maps.MVCArray();
+	var service = new google.maps.DirectionsService();
+	var poly = new google.maps.Polyline({ map: map, strokeColor: '#FF8200' });
+	var src = latlng;
+	
+	var des = new google.maps.LatLng(use_warsztaty[closestMarker].lat,use_warsztaty[closestMarker].lng);
+	path.push(src);
+	poly.setPath(path);
+	service.route({
+		origin: src,
+		destination: des,
+		travelMode: google.maps.DirectionsTravelMode.DRIVING
+	}, function (result, status) {
+		if (status == google.maps.DirectionsStatus.OK) {
+			for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+				path.push(result.routes[0].overview_path[i]);
+			}
+		}
+	});
+	var LatLngList = new Array(src,des);
+	var bounds = new google.maps.LatLngBounds();
+	for (var i = 0, LtLgLen = LatLngList.length; i < LtLgLen; i++) {
+		bounds.extend(LatLngList[i]);
+	}
+	$(".ui-page-active .right-sidebar .sidebar-arrow p").html("Najbliżej: "+use_warsztaty[closestMarker].address);
+	$(".ui-page-active #map_canvas").addClass("loaded");
+	map.fitBounds(bounds);
+}
+function geolocationError() {
+	$(".ui-page-active .right-sidebar .sidebar-arrow p").html('Nie można ustalić pozycji - <a onclick="showGeolocationForm();">ustal ręcznie</a>');
+	var mylat = startingLatitude;
+	var mylong = startingLongitude;
+	var latlng = new google.maps.LatLng(mylat, mylong);
+	var myOptions = {
+		zoom: 7,
+		center: latlng,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		mapTypeControl: false,
+		panControl: false,
+		zoomControl: true,
+		zoomControlOptions: {
+			style: google.maps.ZoomControlStyle.LARGE,
+			position: google.maps.ControlPosition.TOP_RIGHT
+		},
+		scaleControl: true,
+		streetViewControl: false
+	};
+	map = new google.maps.Map($(".ui-page-active #map_canvas")[0], myOptions);
+	var l = Object.keys(use_warsztaty).length;
+	for(var i=0; i<l; i++){
+		createMarker(use_warsztaty[i]);
+	}
+	function createMarker(location) {
+		var latlng = new google.maps.LatLng(parseFloat(location.lat), parseFloat(location.lng));
+		var marker = new google.maps.Marker({
+			map: map,
+			position: latlng,
+			icon: "data:image/png;base64,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"
+		});
+		var infowindow = new google.maps.InfoWindow({
+			content: '<div class="noscrollbar">' + location.content + '</div>'
+		});
+		google.maps.event.addListener(marker, 'click', function() {
+			infowindow.open(map, this);
+		});
+	}
+}
+function showGeolocationForm(){
+	$(".ui-page-active .right-sidebar .sidebar-arrow p").html('<div class="input-outer"><form id="geolocation-form" onsubmit="return false;"><input type="text" id="address" placeholder="Wprowadź adres (autouzupełnianie)" /></form></div>');
+	var input = $(".ui-page-active #address").get(0);
+	var autocomplete = new google.maps.places.Autocomplete(input);
+	autocomplete.bindTo('bounds', map);
+	var marker = new google.maps.Marker({
+		map: map
+	});
+	var pos = {
+		coords: {
+			latitude: startingLatitude,
+			longitude: startingLongitude,
+		}
+	};
+	google.maps.event.addListener(autocomplete, 'place_changed', function() {
+		marker.setVisible(false);
+		var place = autocomplete.getPlace();
+		if (!place.geometry) {
+			return;
+		}
+		if (place.geometry.viewport) {
+			map.fitBounds(place.geometry.viewport);
+		} else {
+			map.setCenter(place.geometry.location);
+		}
+		marker.setPosition(place.geometry.location);
+		marker.setVisible(true);
+		pos.coords.latitude = place.geometry.location.lat();
+		pos.coords.longitude = place.geometry.location.lng();
+		displayPosition(pos);
+	});
+}
+function showPoint(lat,lng){
+	
+}
+
 $(document).on('pagebeforeshow',function(){
 	$(this).find('a[data-rel=back]').buttonMarkup({
         iconpos: 'notext'
@@ -172,6 +349,8 @@ $(document).on('pageshow pagechange',function(){
 $(document).ready(function(){
 	checkVersion();
 	warsztatyLista(false);
+	var gmap = new GoogleMap();
+	gmap.initialize();
 	$(".refresh_connection").bind("click",function(){
 		if(navigator.onLine) {
 			checkVersion();
