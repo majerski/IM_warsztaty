@@ -212,17 +212,12 @@ function GoogleMap(){
 		var h = $(window).height() - 188;
 		$("#map_canvas").css({"height":h+"px"});
 		if(navigator.geolocation){
-			navigator.geolocation.getCurrentPosition(displayPosition,positionError);
+			navigator.geolocation.getCurrentPosition(displayPosition,geolocationError);
 		} else {
 			geolocationError();
 		}
 		
 	}
-}
-function positionError(a,b,c){
-	alert(a);
-	alert(b);
-	alert(c);
 }
 function displayPosition(pos){
 	var mylat = pos.coords.latitude;
