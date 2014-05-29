@@ -106,11 +106,11 @@ function warsztatyLista(){
 			if(i%per_page==0){
 				out = out + '</ul></div><div class="warsztat"><ul data-ajax="false" data-inset="true">';
 			}
-			out = out + '<li><a href="#warsztat" data-ajax="false" onclick="renderWarsztat('+i+')" data-transition="pop"><h6>' + warsztaty[i].konto + '</h6><span>' + warsztaty[i].miasto.toLowerCase() + '</span></a></li>';
+			out = out + '<li><a href="#warsztat" data-ajax="false" onclick="renderWarsztat('+i+')" data-transition="pop"><h6>' + warsztaty[i].konto + '</h6><span>' + warsztaty[i].miasto.toLowerCase() + ', ' + warsztaty[i].ulica.toLowerCase() + '</span></a></li>';
 		}
 		out = out + '</div>';
 		$("#warsztaty_lista_hidden").html(out);
-		$('#warsztaty_paginacja').pagination({
+		$('.warsztaty_paginacja').pagination({
 			items: len,
 			itemsOnPage: per_page,
 			cssStyle: 'light-theme',

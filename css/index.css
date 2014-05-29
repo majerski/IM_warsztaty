@@ -52,7 +52,7 @@ ul.simple-pagination {list-style: none;}
 #page0 .ui-content .ui-btn-up-c .ui-btn-text{text-shadow:1px 1px #fff}
 
 .warsztat .ui-li-heading{margin:0px}
-.warsztat .ui-btn-text span{font-size:12px;text-transform:capitalize;color:#696969;}
+.warsztat .ui-btn-text span{font-size:13px;text-transform:capitalize;color:#8a8a8a;}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
