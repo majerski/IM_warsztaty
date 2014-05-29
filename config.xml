@@ -53,6 +53,7 @@
     -->
 	<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" />
+	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.6" />
 	<gap:plugin name="nl.x-services.plugins.toast" version="2.0" />			<!-- https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin/blob/720f87abc865ad836e097101dbfc2af7bdf8fca7/README.md -->
 
     <!-- Define app icon for each platform. -->
@@ -84,9 +85,7 @@
 
         Otherwise, you can specify specific domains:
     -->
-    <access origin="*"/> <!-- allow local pages -->
-	<access origin="http://www.q-service.com.pl" browserOnly="true" />
-	<access origin="http://www.perfectservice.pl" browserOnly="true" />
+    <access origin="*" browserOnly="true" /> <!-- allow local pages -->
     <!--
         <access origin="http://phonegap.com" />                    - allow any secure requests to http://phonegap.com/
         <access origin="http://phonegap.com" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
