@@ -236,7 +236,7 @@ function displayPosition(pos){
 		scaleControl: true,
 		streetViewControl: false
 	};
-	map = new google.maps.Map($(".ui-page-active #map_canvas")[0], myOptions);
+	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 	var l = Object.keys(use_warsztaty).length;
 	for(var i=0; i<l; i++){
 		createMarker(use_warsztaty[i]);
@@ -299,12 +299,12 @@ function displayPosition(pos){
 	for (var i = 0, LtLgLen = LatLngList.length; i < LtLgLen; i++) {
 		bounds.extend(LatLngList[i]);
 	}
-	$(".ui-page-active .right-sidebar .sidebar-arrow p").html("Najbliżej: "+use_warsztaty[closestMarker].address);
-	$(".ui-page-active #map_canvas").addClass("loaded");
+	//$(".ui-page-active .right-sidebar .sidebar-arrow p").html("Najbliżej: "+use_warsztaty[closestMarker].address);
+	$("#map_canvas").addClass("loaded");
 	map.fitBounds(bounds);
 }
 function geolocationError() {
-	$(".ui-page-active .right-sidebar .sidebar-arrow p").html('Nie można ustalić pozycji - <a onclick="showGeolocationForm();">ustal ręcznie</a>');
+	//$(".ui-page-active .right-sidebar .sidebar-arrow p").html('Nie można ustalić pozycji - <a onclick="showGeolocationForm();">ustal ręcznie</a>');
 	var mylat = startingLatitude;
 	var mylong = startingLongitude;
 	var latlng = new google.maps.LatLng(mylat, mylong);
@@ -322,7 +322,7 @@ function geolocationError() {
 		scaleControl: true,
 		streetViewControl: false
 	};
-	map = new google.maps.Map($(".ui-page-active #map_canvas")[0], myOptions);
+	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 	var l = Object.keys(use_warsztaty).length;
 	for(var i=0; i<l; i++){
 		createMarker(use_warsztaty[i]);
@@ -383,7 +383,6 @@ $(document).on('pageshow pagechange',function(){
 	$(".ui-page-active [data-role=header]").fixedtoolbar({updatePagePadding:true});
 });
 $(document).on('pageshow','#page3',function(){
-	alert('pageshow');
 	if(typeof GoogleMap != 'undefined'){
 		var gmap = new GoogleMap();
 		gmap.initialize();
