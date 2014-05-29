@@ -210,8 +210,7 @@ var startingLongitude = 19.480204;
 function GoogleMap(){
 	this.initialize = function(){
 		var h = $(window).height() - 188;
-		//$("#map_canvas").css({"height":h+"px"});
-		
+		$("#map_canvas").css({"height":h+"px"});
 		if(navigator.geolocation){
 			navigator.geolocation.getCurrentPosition(displayPosition,geolocationError);
 		} else {
