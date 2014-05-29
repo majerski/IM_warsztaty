@@ -220,6 +220,7 @@ function GoogleMap(){
 	}
 }
 function displayPosition(pos){
+	alert('displayPosition');
 	var mylat = pos.coords.latitude;
 	var mylong = pos.coords.longitude;
 	var latlng = new google.maps.LatLng(mylat,mylong);
@@ -305,6 +306,7 @@ function displayPosition(pos){
 	map.fitBounds(bounds);
 }
 function geolocationError() {
+	alert('geolocationError');
 	//$(".ui-page-active .right-sidebar .sidebar-arrow p").html('Nie można ustalić pozycji - <a onclick="showGeolocationForm();">ustal ręcznie</a>');
 	var mylat = startingLatitude;
 	var mylong = startingLongitude;
