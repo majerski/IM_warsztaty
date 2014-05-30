@@ -68,9 +68,13 @@ ul.simple-pagination {list-style: none;}
 #warsztaty_content .warsztat-btn small{font-size:13px;color:#666}
 #warsztaty_content .warsztat-btn:active small{color:#fff}
 
+#page3 .ui-content{position:relative}
 #map_canvas{width:100%;min-height:200px;background-color:#f5f5f5}
 .noscrollbar {line-height:1.35;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#444;}
 .noscrollbar span.capitalize{text-transform:capitalize;}
+.input-outer {position:absolute;bottom:0;left:0;width:100%;z-index:9999;background:url('../img/dot.png') top left repeat;}
+.input-outer > form{display:block;margin:0 10%;}
+.input-outer > form > input{width:100%;padding:2px 10px;}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {

@@ -236,13 +236,30 @@ function GoogleMap(){
 	this.initialize = function(){
 		var h = $(window).height() - 188;
 		$("#map_canvas").css({"height":h+"px"});
+		geolocationError();
+		/*
 		if(navigator.geolocation){
 			navigator.geolocation.getCurrentPosition(displayPosition,geolocationError);
 		} else {
 			geolocationError();
 		}
-		
+		*/
 	}
+}
+function createMarker(location) {
+	var mapicon = $.trim(location.umowa).toLowerCase().replace(/ /g,'').replace(/-/g,'');
+	var latlng = new google.maps.LatLng(parseFloat(location.lat), parseFloat(location.lng));
+	var marker = new google.maps.Marker({
+		map: map,
+		position: latlng,
+		icon:icons[mapicon]
+	});
+	var infowindow = new google.maps.InfoWindow({
+		content: '<div class="noscrollbar">' + location.konto + '<br /><br /><span class="capitalize">'+location.ulica.toLowerCase()+'<br />'+location.kod.substr(0,2)+'-'+location.kod.substr(2)+' '+location.miasto.toLowerCase()+'</span><br /><br /><a href="geo:0,0?q='+encodeURI(location.miasto+', '+location.ulica)+'" class="ui-btn ui-mini ui-icon-location ui-btn-icon-left ui-corner-all">pokaż w nawigacji</a></div>'
+	});
+	google.maps.event.addListener(marker, 'click', function() {
+		infowindow.open(map, this);
+	});
 }
 function displayPosition(pos){
 	currentPosition = pos;
@@ -267,21 +284,6 @@ function displayPosition(pos){
 	var l = Object.keys(use_warsztaty).length;
 	for(var i=0; i<l; i++){
 		createMarker(use_warsztaty[i]);
-	}
-	function createMarker(location) {
-		var mapicon = $.trim(location.umowa).toLowerCase().replace(/ /g,'').replace(/-/g,'');
-		var latlng = new google.maps.LatLng(parseFloat(location.lat), parseFloat(location.lng));
-		var marker = new google.maps.Marker({
-			map: map,
-			position: latlng,
-			icon:icons[mapicon]
-		});
-		var infowindow = new google.maps.InfoWindow({
-			content: '<div class="noscrollbar">' + location.konto + '<br /><br /><span class="capitalize">'+location.ulica.toLowerCase()+'<br />'+location.kod.substr(0,2)+'-'+location.kod.substr(2)+' '+location.miasto.toLowerCase()+'</span><br /><br /><a href="geo:0,0?q='+encodeURI(location.miasto+', '+location.ulica)+'" class="ui-btn ui-mini ui-icon-location ui-btn-icon-left ui-corner-all">pokaż w nawigacji</a></div>'
-		});
-		google.maps.event.addListener(marker, 'click', function() {
-			infowindow.open(map, this);
-		});
 	}
 	var marker = new google.maps.Marker({
 		position: latlng,
@@ -336,6 +338,9 @@ function geolocationError() {
 		window.plugins.toast.showLongCenter('Nie można ustalić pozycji.',function(a){},function(b){});
 	}
 	//$(".ui-page-active .right-sidebar .sidebar-arrow p").html('Nie można ustalić pozycji - <a onclick="showGeolocationForm();">ustal ręcznie</a>');
+	
+	$('#page3 .ui-content').prepend('<div class="input-outer"><form id="geolocation-form" onsubmit="return false;"><input type="text" id="address" placeholder="Wprowadź adres (autouzupełnianie)" /></form></div>');
+	
 	var mylat = startingLatitude;
 	var mylong = startingLongitude;
 	var latlng = new google.maps.LatLng(mylat, mylong);
@@ -357,21 +362,6 @@ function geolocationError() {
 	var l = Object.keys(use_warsztaty).length;
 	for(var i=0; i<l; i++){
 		createMarker(use_warsztaty[i]);
-	}
-	function createMarker(location) {
-		var mapicon = $.trim(location.umowa).toLowerCase().replace(/ /g,'').replace(/-/g,'');
-		var latlng = new google.maps.LatLng(parseFloat(location.lat), parseFloat(location.lng));
-		var marker = new google.maps.Marker({
-			map: map,
-			position: latlng,
-			icon:icons[mapicon]
-		});
-		var infowindow = new google.maps.InfoWindow({
-			content: '<div class="noscrollbar">' + location.konto + '<br /><br /><span class="capitalize">'+location.ulica.toLowerCase()+'<br />'+location.kod.substr(0,2)+'-'+location.kod.substr(2)+' '+location.miasto.toLowerCase()+'</span><br /><br /><a href="geo:0,0?q='+encodeURI(location.miasto+', '+location.ulica)+'" class="ui-btn ui-mini ui-icon-location ui-btn-icon-left ui-corner-all">pokaż w nawigacji</a></div>'
-		});
-		google.maps.event.addListener(marker, 'click', function() {
-			infowindow.open(map, this);
-		});
 	}
 }
 function showGeolocationForm(){
