@@ -15,28 +15,7 @@ var app = {
         },false);
     },
     onDeviceReady: function() {
-		if(typeof window.plugin.email != 'undefined' && typeof window.plugin.email != null){
-			//alert('got window.plugin.email');
-			console.log(window.plugin.email);
-			window.plugin.email.isServiceAvailable(
-				function(isAvailable){
-					//alert(isAvailable);
-					window.plugin.email.open({
-						to:['tomasz@arcontact.pl'],
-						subject:'1',
-						body:'aa',
-						isHtml:true
-					});
-				}
-			);
-			
-			window.plugin.email.open({
-				to:['tomasz@arcontact.pl'],
-				subject:'2',
-				body:'bb',
-				isHtml:true
-			});
-		}
+		
     },
 	onLoad: function() {
 		
