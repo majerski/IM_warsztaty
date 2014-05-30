@@ -54,7 +54,7 @@
     -->
 	<gap:plugin name="org.apache.cordova.splashscreen" />
 	<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
-	<gap:plugin name="org.apache.cordova.inappbrowser" />
+	<gap:plugin name="org.apache.cordova.inappbrowser" version="0.3.3" />
 	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.6" />
 	<gap:plugin name="nl.x-services.plugins.toast" version="2.0" />
 	<gap:plugin name="de.appplant.cordova.plugin.email-composer" version="0.8.1" />
