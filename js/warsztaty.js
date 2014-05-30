@@ -196,6 +196,7 @@ function showGeolocationForm(){
 }
 function showPoint(id){
 	$("#map_canvas").empty();
+	document.getElementById("map_canvas").innerHTML="";
 	warsztatShowPointId = id;
 }
 function openDeviceBrowser(url){
