@@ -56,7 +56,7 @@
 	<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" />
 	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.6" />
-	<gap:plugin name="nl.x-services.plugins.toast" version="2.0" />			<!-- https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin/blob/720f87abc865ad836e097101dbfc2af7bdf8fca7/README.md -->
+	<gap:plugin name="nl.x-services.plugins.toast" version="2.0" />
 	<gap:plugin name="de.appplant.cordova.plugin.email-composer" version="0.8.1" />
 	
     <!-- Define app icon for each platform. -->
