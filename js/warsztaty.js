@@ -62,7 +62,6 @@ function closestMarker(position,use_warsztaty){
 	return closestMarker;
 }
 function displayPosition(pos){
-	$("#map_canvas").empty();
 	currentPosition = pos;
 	var mylat = pos.coords.latitude;
 	var mylong = pos.coords.longitude;
@@ -196,6 +195,7 @@ function showGeolocationForm(){
 	});
 }
 function showPoint(id){
+	$("#map_canvas").empty();
 	warsztatShowPointId = id;
 }
 function openDeviceBrowser(url){
