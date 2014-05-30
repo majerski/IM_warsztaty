@@ -433,8 +433,11 @@ $(document).on('pageshow','#page4',function(){
 		errorPlacement: function(error, element) {
 			error.insertAfter(element);
 		},
+		messages: {
+			required: "pole wymagane"
+		},
 		submitHandler:function(form){
-			var mailbody = '<p>Dane z formularza:</p><dl><dt>numer VIN</dt><dd>'+$("#vin").val()+'</dd><dt>marka,model,silnik</dt><dd>'+$("#marka").val()+'</dd><dt>rok produkcji</dt><dd>'+$("#rok").val()+'</dd><dt>rodzaj paliwa</dt><dd>'+$("#paliwo").val()+'</dd></dl>';
+			var mailbody = '<p>Dane z formularza:</p><table><tr><td style="padding:5px 30px 5px 0">numer VIN</td><td>'+$("#vin").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">marka, model, silnik</td><td>'+$("#marka").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">rok produkcji</td><td>'+$("#rok").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">rodzaj paliwa</td><td>'+$("#paliwo").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">numer rejestracyjny</td><td>'+$("#rejestr").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">usługa do wyceny</td><td>'+$("#usluga").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">e-mail</td><td>'+$("#email").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">numer telefonu</td><td>'+$("#tel").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">miasto</td><td>'+$("#miasto").val()+'</td></tr></table>';
 			window.plugin.email.isServiceAvailable(
 				function(isAvailable){
 					window.plugin.email.open({
