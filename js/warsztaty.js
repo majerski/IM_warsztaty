@@ -421,6 +421,8 @@ function warsztatyLista(search){
 }
 
 function initNews(){
+	var h = $(window).height() - 188;
+	$('#articles').css({"min-height":h});
     var new_content = $('#articles_hidden div.news:eq(0)').clone();
     $('#articles').empty().addClass('loading');
 	$('#articles').append(new_content);
@@ -536,10 +538,12 @@ $(document).on('pageshow','#page4',function(){
 $(document).ready(function(){
 	checkVersion();
 	warsztatyLista(false);
+	getNews();
 	$(".refresh_connection").bind("click",function(){
 		if(navigator.onLine) {
 			checkVersion();
 			warsztatyLista(false);
+			getNews();
 		} else {
 			window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 		}
