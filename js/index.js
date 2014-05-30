@@ -15,7 +15,16 @@ var app = {
         },false);
     },
     onDeviceReady: function() {
-		
+		if(typeof window.plugin.email != 'undefined' && typeof window.plugin.email != null){
+			alert('got window.plugin.email');
+			window.plugin.email.isServiceAvailable(
+				function(isAvailable){
+					alert('isServiceAvailable');
+				}
+			);
+		} else {
+			alert('window.plugin.email not loaded');
+		}
     },
 	onLoad: function() {
 		
