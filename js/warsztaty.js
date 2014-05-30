@@ -548,4 +548,9 @@ $(document).ready(function(){
 			window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 		}
 	});
+	$('body').on('click', '[rel="external"]', function(e){
+		e.preventDefault();
+		var _el = $(this);
+		window.open(_el.attr('href'), '_system', 'location=no');
+	});
 });
