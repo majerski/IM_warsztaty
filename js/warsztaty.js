@@ -18,7 +18,6 @@ var icons = {
 	qservice:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAlCAYAAAAjt+tHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABSJJREFUeNq0V11MXEUU/nZZdpddXKgKmihCxbQJhDam8gCl9GUpoX1oG7c2/sREMaTV+GIfLD7wgIlWU7WkUpqYaDSWNrGpNlJjpW0Eq8S2tAJl1VoTQLEIhgCyy+6yP845O/f2su7PvQqTnMz9mTvfN985c+4cUywWA7W6ujqL6MzCrLK3YHlbWFhUWIj67u5uuoeJCEhwArZLs0oC5mUCj0oCBB6QFiISJrfbrYA7hLlkb18hBQjYL2xO9iFllXYJXrj93Lk+rGA77XZXaVXRSu8g8BJbDhxmM+zmrGUFDkQj8EejIAxBokJxgzbwiMSKgFNLmFOJM7MS7YqtCHgSEiqmEmi6o92Sl4eCp55EXs1GuGo38TPf4BCmu84I60JwdEzvVGYYiXRvdhaCtbV44fRn/3qXt6mGbfUbr6N9+w7YentRthjRzyJdmxJeeu++e2A6+KYKHp6dxew3F/HbawfY6JqeUaMxRSeO49D99/K3GRVN93Iky4w2MdEHn5xEWVk5g4y83IzJj48lHV8oXFPUvB/19fUoOnUKz+zyYMfEFDYHF40r4DOZ8KrLgaaX9jE4+flqWQWmP++KA73SDOe6Cl7lyRwbvrBbMdx5HAPVNTyWvml9+xA+ctjSKpHyDX24qugBNDY+xyv/6fEnuF97ohMPHT0iCOzH+u8uorPBLQhYeXyrK4fHDDds456UWFddjQ6n3RgBWn2PLVuAN/L9rfYOjm7aARRsdH1zz/P8bsuWepaYrCASU2OEXEXN43mMAziVCkmfXrHGQ6OqKp41J4/FfU6Sc1YbGxMkRvm6vLycyRKAJxBU5yBXUSMVqF22WvQT8FriCUMJvHR72yH+pk5htMrWOxzqSpWd4nK52K5kGyDgFy6gtnv3Lt5maj4fG1OTka24OE522ItHF0IoiEbj2zbLdFsFkZxoDsPbsCEYYsn6+vowcVeh+pyUICNXUCBS+3n8dw5ApSlxwAsZHETf8ABfbw4t6leAslhliA8suDo+vuTd9a3bWJVb7XECLz7bCI9QgKzlb7+qBPtdyk7zpcoFKRPRHl9A+NWJCwE/KoXk5FPa75j8E1Nt77Cvd176HlND19VveqzZIn4saAiEOC4+nZzgfq8vYDwT0of75hfQ+qMXF9auQe2lfhHtFlViv9mEr86e5S0LS5YmdQOPiHdDpQ/i2h/j2OsPLlHFUCom6Yj9kZs3YC68Gy1/TauTETAFa7LJfxXg74cC7JZ0aVjX31CZ4F0nsHNNKed228wMK+SMxZaMDebnC7VK8eEvN/g7z0Lw//2MEkl0CJ+ez3eh0mlDhTMXq6ZnEJmdwdzqEoyKmDgv4mVOgD8tZN8aCOk7X+g9DxCJ4nAERyNRlDQ1oVpmOEpWXu8wTGLL2t46iBbhMr1nAS2BqJ7BJQL8wKwPl9sO4+ueXgSE5F+K56SC44dBHM7g7yS1AhMIa4xPr5nOhZwjxK74LydjTY3AZtaUS7xZ6eisGbjsx3LlVinRLBpwPxUNqQoTqhfutGTrApsOL2IkuJCuMPFr64KovJmTAyoSSjNO14LYt9RnIqGAi3k2JsRXYmlG11E9xal6hhck+tMpoQHfkBBbqYvTDOW50mvLt2vJSGjAH9ZKnEAgeXmerkliBJ4rjUgMaElowNdL8HlpAQUoVctIIAWJXEUJPr7fXvm8EXDdBJKQcEkS/TJwN0jQOSPghggkkHBIs8pXISm93wi4YQIaEtaErRrWRraR+f4RYAAMqZ7V/z/CFgAAAABJRU5ErkJggg==",
 	perfectservice:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAlCAYAAAAjt+tHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA6BJREFUeNq8V0FPGkEUfq4UKBowJCXxANqbSbs0jadGveGl0vSs/AG1P0D0B9T2B9T+garnptoe9GabnkxTsUkPJio0MfFghCgFimvnm53ZjOsusApO8jLMssz3vfe+N8zrury8JIzx8XEfmzRmfjH7qL2jzsxgVsO8sbGBNXWBgAAHcFCYXxDQ2gRuCAIArwirgURXKpWS4CFmYTEHOxQBAJeZlcRck14GBXjs5ebmd+rg+JhKPVOjooY+BPDBwH0KaRoFte62AleMCyobBgGDkdBlGlThgURHwDFse0qdaVLt0joC7kDCwpQq1+juh9YW4PjC/K1+f6tS60nq5IuEKTI2ytehZJLP5Z0dKm597QyBwECC4vNZir5I0/lOjj/rfzV77b3qYZ52n0/wuW0EANo/O8M/AxyedkciVE0kODE54P3F6SkF2fMbE3DLbckWWoT9nBHhltu98l14bIyb+bstx7S4EjjP5SjAPPAxDwOJuDkPDDCPDun3ZMZ6b2h1mQqLb6x02CPWo+tUeL3YuBQcc83Aj94tcZEB+GjpPR3MZWlv2sw3hPfoyzp19/VRNJ121ArAw0KgnlMAj2H1YomHvV4sXvFShtb8PEoP3y7ydJiVEeHP4cCfBt67EoCq4wtZbgAFOEAgOhDq0R/T8cqq5R3EJvWBSEEPzcTXkMDJ2hrbNG7VtSo4CYQU7U3PUCyToV9NvPRMAOz351o74Qq3AHcVIfIYsYlHasJRbEnd8fmNIxDLTPFw97PD5GT9Mw93ND3BS1CuoQOU49DqCkvZuiVKkKzm8/SA7QE9mGVsVhS01FIEIDRsihIDEEoRa5TjIFM7AGDYHAcMCMMgWoDgqAbZ2NQkhUdHuFidouSuAQCwDTCDPWbU9PHyivVMnnogu5+dtw4tEJLkrHTkC44HlSuB4w/L1yvj01rLInQD83QS3umtRNxQ73oYkkBdMX577dRQ9rYwNaVdqvDbDLs6d4KEvJbLpWzRfAp4GU2DW2OCfiHqu9cS2En9Hx1U/zZqTMpqX2CIRUm8oNtaM64TRuwb/49vQkKCs31GbPqyt2b4bLTSnFp3eEZiu1EkFPBhm7bcm9Mm7bmc1fbthxMJBfypGmIbAef2vNEQxADeKwwkfqokFPAnAvxMWEUCuY2mBFxI9MpIYCien3kBb5mAA4mwILEthDssQEtewD0RsJEICfOLr2oi9GUv4J4JKCT8tlKtq8r2st9/AQYAMzDz3r0Yr1wAAAAASUVORK5CYII="
 };
-var showNearestPoint = true;
 var warsztatShowPointId = false;
 
 function GoogleMap(){
@@ -81,8 +80,8 @@ function displayPosition(pos){
 		streetViewControl: false
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-	var l = Object.keys(use_warsztaty).length;
 	if(!warsztatShowPointId){
+		var l = Object.keys(use_warsztaty).length;
 		for(var i=0; i<l; i++){
 			createMarker(use_warsztaty[i]);
 		}
@@ -151,9 +150,13 @@ function geolocationError() {
 		streetViewControl: false
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-	var l = Object.keys(use_warsztaty).length;
-	for(var i=0; i<l; i++){
-		createMarker(use_warsztaty[i]);
+	if(!warsztatShowPointId){
+		var l = Object.keys(use_warsztaty).length;
+		for(var i=0; i<l; i++){
+			createMarker(use_warsztaty[i]);
+		}
+	} else {
+		createMarker(use_warsztaty[warsztatShowPointId]);
 	}
 	showGeolocationForm();
 }
@@ -190,7 +193,6 @@ function showGeolocationForm(){
 	});
 }
 function showPoint(id){
-	showNearestPoint = false;
 	warsztatShowPointId = id;
 }
 function openDeviceBrowser(url){

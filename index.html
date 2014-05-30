@@ -37,11 +37,11 @@
 				</div>
 				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
                     <div data-role="navbar">
-                        <ul>
+						<ul>
 							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
-							<li><a href="http://www.q-service.com.pl"><img src="img/qservice-logo.png" alt="" /></a></li>
-							<li><a href="http://www.perfectservice.pl"><img src="img/perfectservice-logo.png" alt="" /></a></li>
-                        </ul>
+							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservice-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')"><img src="img/perfectservice-logo.png" alt="" /></a></li>
+						</ul>
                     </div>
                 </div>
 			</div>
@@ -65,10 +65,10 @@
                <div data-role="footer" data-position="fixed" data-tap-toggle="false">
                     <div data-role="navbar">
                         <ul>
-							<li><a href="http://www.q-service.com.pl"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
-							<li><a href="http://www.q-service.com.pl"><img src="img/qservice-logo.png" alt="" /></a></li>
-							<li><a href="http://www.perfectservice.pl"><img src="img/perfectservice-logo.png" alt="" /></a></li>
-                        </ul>
+							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservice-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')"><img src="img/perfectservice-logo.png" alt="" /></a></li>
+						</ul>
                     </div>
                 </div>
             </div>
@@ -98,10 +98,10 @@
 				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
                     <div data-role="navbar">
                         <ul>
-							<li><a href="http://www.q-service.com.pl"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
-							<li><a href="http://www.q-service.com.pl"><img src="img/qservice-logo.png" alt="" /></a></li>
-							<li><a href="http://www.perfectservice.pl"><img src="img/perfectservice-logo.png" alt="" /></a></li>
-                        </ul>
+							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservice-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')"><img src="img/perfectservice-logo.png" alt="" /></a></li>
+						</ul>
                     </div>
                 </div>
             </div>
@@ -124,11 +124,11 @@
 				</div>
 				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
                     <div data-role="navbar">
-                        <ul>
-							<li><a href="http://www.q-service.com.pl"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
-							<li><a href="http://www.q-service.com.pl"><img src="img/qservice-logo.png" alt="" /></a></li>
-							<li><a href="http://www.perfectservice.pl"><img src="img/perfectservice-logo.png" alt="" /></a></li>
-                        </ul>
+                       <ul>
+							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservice-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')"><img src="img/perfectservice-logo.png" alt="" /></a></li>
+						</ul>
                     </div>
                 </div>
 			</div>
@@ -147,15 +147,50 @@
 					</div>
 				</div>
                 <div data-role="content">
-					formularz wyceny 
+					<form action="#page4" onsubmit="return false;">
+						
+						<label for="vin">numer VIN</label>
+						<input type="text" name="vin" id="vin" placeholder="numer VIN" />
+						
+						<label for="marka">marka, model, silnik</label>
+						<input type="text" name="marka" id="marka" placeholder="marka, model, silnik" />
+						
+						<label for="rok">rok produkcji</label>
+						<input type="number" name="rok" id="rok" placeholder="rok produkcji" />
+						
+						<label for="paliwo">rodzaj paliwa</label>
+						<select name="paliwo" id="paliwo" data-native-menu="false">
+							<option value="benzyna">benzyna</option>
+							<option value="olej napędowy">olej napędowy</option>
+							<option value="inne">inne</option>
+						</select>
+						
+						<label for="rejestr">numer rejestracyjny</label>
+						<input type="text" name="rejestr" id="rejestr" placeholder="numer rejestracyjny" />
+						
+						<label for="usluga">usługa do wyceny</label>
+						<textarea cols="40" rows="8" name="usluga" id="usluga"></textarea>
+						
+						<label for="email">E-mail</label>
+						<input type="email" name="email" id="email" placeholder="E-mail" />
+						
+						<label for="tel">Numer telefonu</label>
+						<input type="tel" name="tel" id="tel" placeholder="Numer telefonu" />
+						
+						<label for="miasto">miasto</label>
+						<input type="text" name="miasto" id="miasto" placeholder="miasto" />
+						
+						<input type="submit" value="wyślij" data-icon="check" data-iconpos="right" />
+						
+					</form>
 				</div>
 				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
                     <div data-role="navbar">
                         <ul>
-							<li><a href="http://www.q-service.com.pl"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
-							<li><a href="http://www.q-service.com.pl"><img src="img/qservice-logo.png" alt="" /></a></li>
-							<li><a href="http://www.perfectservice.pl"><img src="img/perfectservice-logo.png" alt="" /></a></li>
-                        </ul>
+							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservice-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')"><img src="img/perfectservice-logo.png" alt="" /></a></li>
+						</ul>
                     </div>
                 </div>
 			</div>
@@ -177,10 +212,10 @@
 				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
                     <div data-role="navbar">
                         <ul>
-							<li><a href="http://www.q-service.com.pl"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
-							<li><a href="http://www.q-service.com.pl"><img src="img/qservice-logo.png" alt="" /></a></li>
-							<li><a href="http://www.perfectservice.pl"><img src="img/perfectservice-logo.png" alt="" /></a></li>
-                        </ul>
+							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservice-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')"><img src="img/perfectservice-logo.png" alt="" /></a></li>
+						</ul>
                     </div>
                 </div>
 			</div>
@@ -192,6 +227,8 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
 			app.initialize();
+			var y = new Date().getFullYear();
+			$('#rok').val(y);
         </script>
 		<script type="text/javascript" src="js/warsztaty.js"></script>
     </body>

@@ -20,7 +20,7 @@ a{text-decoration: none;}
 .ui-grid-a .ui-block-b .ui-btn{margin-right: 0px;}
 .big-text{font-size: 1.3em;}
 .small-text{font-size:0.8em;}
-.ui-btn-active {border: 1px solid #1abc9c;background: #1abc9c;font-weight: bold;color:#ffffff;cursor: pointer;text-decoration: none;font-family: Lato, sans-serif}
+.ui-btn-active {border: 1px solid #d60811;background: #d60811;font-weight: bold;color:#ffffff;cursor: pointer;text-decoration: none;font-family: Lato, sans-serif}
 .ui-icon-ms-phone {background: url("../img/phone-icon.png") 50% 50% no-repeat;}
 .ui-icon-ms-question {background: url("../img/question-icon.png") 50% 50% no-repeat;}
 .ui-icon-ms-search {background: url("../img/search-icon.png") 50% 50% no-repeat;}
@@ -70,7 +70,7 @@ ul.simple-pagination {list-style: none;}
 
 #page3 .ui-content{position:relative}
 #map_canvas{width:100%;min-height:200px;background-color:#f5f5f5}
-.noscrollbar {line-height:1.35;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#444;}
+.noscrollbar {line-height:1.35;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#444;font-family:Lato,sans-serif;}
 .noscrollbar span.capitalize{text-transform:capitalize;}
 .input-outer {position:absolute;top:0px;left:0;width:100%;z-index:9999;background:url('../img/dot.png') top left repeat;}
 .input-outer div{margin:10px 10%;}
