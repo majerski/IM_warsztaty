@@ -5,6 +5,7 @@ $(window).load(function(){
 	$("#app").show();
 });
 
+var newsUrl = 'http://www.q-service.com.pl/rss/';
 var warsztaty = [];
 var _warsztaty = []; // po szukaniu
 var use_warsztaty = [];
@@ -61,7 +62,6 @@ function closestMarker(position,use_warsztaty){
 	return closestMarker;
 }
 function displayPosition(pos){
-	$("#map_canvas").empty();
 	currentPosition = pos;
 	var mylat = pos.coords.latitude;
 	var mylong = pos.coords.longitude;
@@ -418,8 +418,89 @@ function warsztatyLista(search){
 	}
 }
 
+function initNews(){
+    var new_content = $('#articles_hidden div.news:eq(0)').clone();
+    $('#articles').empty().addClass('loading');
+	$('#articles').append(new_content);
+	$('#page1').page();
+	$('#articles ul').listview();
+    return false;
+};
+function clickNews(news_index, jq){
+    var new_content = $('#articles_hidden div.news:eq('+(news_index-1)+')').clone();
+    $('#articles').empty().append(new_content);
+	$('#articles ul').listview();
+    return false;
+};
+function getNews() {
+	var _news = [];
+	var ajaxNews = $.ajax({
+		url: newsUrl,
+		type: 'GET',
+		async: false,
+		cache: false
+	});
+	ajaxNews.done(function(res){
+		if(typeof res != 'undefined') {
+			$('#articles').removeClass('loading');
+
+			var xml = $(res);
+			var items = xml.find("item");
+
+			var list_block = $('<ul/>');
+			list_block.appendTo('#articles');
+
+			$.each(items, function(i, v) {
+				entry = {
+					title: $(v).find("title").text(),
+					date: $(v).find("pubDate").text(),
+					link: $(v).find("link").text(),
+					description: $.trim($(v).find("description").text())
+				};
+				_news.push(entry);
+			});
+		}
+	});
+
+	var len = Object.keys(_news).length;
+	if( len > 0 ) {
+		$('#articles').empty();
+		var out = '<div class="news"><ul data-ajax="false" data-inset="true">';
+		var per_page = 10;
+
+		$.each(_news,function(i,item){
+			if(i%per_page==0 && i!=0){
+				out = out + '</ul></div><div class="news"><ul data-ajax="false" data-inset="true">';
+			}
+			var _date = new Date(Date.parse(item.date));
+			var months = Array("Stycznia", "Lutego", "Marca", "Kwietnia", "Maja", "Czerwca", "Lipca", "Sierpnia", "Września", "Października", "Listopada", "Grudnia");
+			var date_string = _date.getDate() + " " + months[_date.getMonth()] + " " + _date.getFullYear();
+			out = out + '<li><a href="' +item.link+ '" data-ajax="false" rel="external"><h6>' + item.title + '</h6><span>' +date_string+ '</span></a></li>';
+		});
+		out = out + '</div>';
+
+		$("#articles_hidden").html(out);
+		$('.articles_pagination').pagination('destroy').pagination({
+			items: len,
+			itemsOnPage: per_page,
+			cssStyle: 'light-theme',
+			prevText: '<',
+			nextText: '>',
+			edges: 1,
+			displayedPages: 3,
+			onPageClick: clickNews,
+			onInit: initNews
+		});
+	} else {
+		window.plugins.toast.showLongCenter('Nie udało się wgrać listy aktualności. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
+	}
+};
+
 $(document).on('pageshow pagechange',function(){
 	$(".ui-page-active [data-role=header]").fixedtoolbar({updatePagePadding:true});
+});
+$(document).on('pageshow','#page1',function(){
+	initNews();
 });
 $(document).on('pageshow','#page3',function(){
 	if(typeof GoogleMap != 'undefined'){
@@ -428,7 +509,6 @@ $(document).on('pageshow','#page3',function(){
 	}
 });
 $(document).on('pageshow','#page4',function(){
-	/*
 	$("#wycena").validate({
 		errorPlacement: function(error, element) {
 			error.insertAfter(element);
@@ -450,7 +530,6 @@ $(document).on('pageshow','#page4',function(){
 			);
 		}
 	});
-	*/
 });
 $(document).ready(function(){
 	checkVersion();

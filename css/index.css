@@ -77,7 +77,9 @@ ul.simple-pagination {list-style: none;}
 .input-outer .ui-input-text{background-color:#fff}
 
 label.error{float:left;color:red;padding-top:.5em;vertical-align:top;font-weight:bold;}
-.send{}
+
+#articles {width:100%; height:100%; overflow:hidden;}
+#articles.loading {background:url('../img/preloader.gif') no-repeat center;}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
