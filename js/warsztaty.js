@@ -432,6 +432,19 @@ $(document).on('pageshow','#page4',function(){
 	$("#wycena").validate({
 		errorPlacement: function(error, element) {
 			error.insertAfter(element);
+		},
+		submitHandler:function(form){
+			var mailbody = '<p>Dane z formularza:</p><dl><dt>numer VIN</dt><dd>'+$("#vin").val()+'</dd><dt>marka,model,silnik</dt><dd>'+$("#marka").val()+'</dd><dt>rok produkcji</dt><dd>'+$("#rok").val()+'</dd><dt>rodzaj paliwa</dt><dd>'+$("#paliwo").val()+'</dd></dl>';
+			window.plugin.email.isServiceAvailable(
+				function(isAvailable){
+					window.plugin.email.open({
+						to:['mifdetal@intercars.eu'],
+						subject:'Zapytanie z aplikacji mobilnej Inter Cars sieć warsztatów.',
+						body:mailbody,
+						isHtml:true
+					});
+				}
+			);
 		}
 	});
 });
