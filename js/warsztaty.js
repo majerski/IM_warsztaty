@@ -162,7 +162,6 @@ function geolocationError() {
 	showGeolocationForm();
 }
 function showGeolocationForm(){
-	//$(".ui-page-active .right-sidebar .sidebar-arrow p").html('<div class="input-outer"><form id="geolocation-form" onsubmit="return false;"><input type="text" id="address" placeholder="Wprowadź adres (autouzupełnianie)" /></form></div>');
 	var input = $("#address").get(0);
 	var autocomplete = new google.maps.places.Autocomplete(input);
 	autocomplete.bindTo('bounds', map);
@@ -429,6 +428,7 @@ $(document).on('pageshow','#page3',function(){
 	}
 });
 $(document).on('pageshow','#page4',function(){
+	/*
 	$("#wycena").validate({
 		errorPlacement: function(error, element) {
 			error.insertAfter(element);
@@ -437,19 +437,20 @@ $(document).on('pageshow','#page4',function(){
 			required: "pole wymagane"
 		},
 		submitHandler:function(form){
-			var mailbody = '<p>Dane z formularza:</p><p>numer VIN: '+$("#vin").val()+'<br />marka, model, silnik: '+$("#marka").val()+'<br />rok produkcji: '+$("#rok").val()+'<br />rodzaj paliwa: '+$("#paliwo").val()+'<br />numer rejestracyjny: '+$("#rejestr").val()+'<br />usługa do wyceny: '+$("#usluga").val()+'<br />e-mail: '+$("#email").val()+'<br />numer telefonu: '+$("#tel").val()+'<br />miasto: '+$("#miasto").val()+'</p>';
+			var mailbody1 = '<p>Dane z formularza:</p><p>numer VIN: '+$("#vin").val()+'<br />marka, model, silnik: '+$("#marka").val()+'<br />rok produkcji: '+$("#rok").val()+'<br />rodzaj paliwa: '+$("#paliwo").val()+'<br />numer rejestracyjny: '+$("#rejestr").val()+'<br />usługa do wyceny: '+$("#usluga").val()+'<br />e-mail: '+$("#email").val()+'<br />numer telefonu: '+$("#tel").val()+'<br />miasto: '+$("#miasto").val()+'</p>';
 			window.plugin.email.isServiceAvailable(
 				function(isAvailable){
 					window.plugin.email.open({
 						to:['mifdetal@intercars.eu'],
 						subject:'Zapytanie z aplikacji mobilnej Inter Cars sieć warsztatów.',
-						body:mailbody,
+						body:mailbody1,
 						isHtml:true
 					});
 				}
 			);
 		}
 	});
+	*/
 });
 $(document).ready(function(){
 	checkVersion();
