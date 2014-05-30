@@ -437,7 +437,7 @@ $(document).on('pageshow','#page4',function(){
 			required: "pole wymagane"
 		},
 		submitHandler:function(form){
-			var mailbody = '<p>Dane z formularza:</p><table><tr><td style="padding:5px 30px 5px 0">numer VIN</td><td>'+$("#vin").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">marka, model, silnik</td><td>'+$("#marka").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">rok produkcji</td><td>'+$("#rok").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">rodzaj paliwa</td><td>'+$("#paliwo").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">numer rejestracyjny</td><td>'+$("#rejestr").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">usługa do wyceny</td><td>'+$("#usluga").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">e-mail</td><td>'+$("#email").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">numer telefonu</td><td>'+$("#tel").val()+'</td></tr><tr><td style="padding:5px 30px 5px 0">miasto</td><td>'+$("#miasto").val()+'</td></tr></table>';
+			var mailbody = '<p>Dane z formularza:</p><p>numer VIN: '+$("#vin").val()+'<br />marka, model, silnik: '+$("#marka").val()+'<br />rok produkcji: '+$("#rok").val()+'<br />rodzaj paliwa: '+$("#paliwo").val()+'<br />numer rejestracyjny: '+$("#rejestr").val()+'<br />usługa do wyceny: '+$("#usluga").val()+'<br />e-mail: '+$("#email").val()+'<br />numer telefonu: '+$("#tel").val()+'<br />miasto: '+$("#miasto").val()+'</p>';
 			window.plugin.email.isServiceAvailable(
 				function(isAvailable){
 					window.plugin.email.open({
