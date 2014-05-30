@@ -6,7 +6,7 @@
         id        = "com.phonegap.imwarsztaty"
         version   = "1.0.0">
 
-    <name>11AA Inter Cars sieć warsztatów Q-Service, Perfect Service, Q-Service Premium</name>
+    <name>Inter Cars sieć warsztatów Q-Service, Perfect Service, Q-Service Premium</name>
 
     <description>
         Inter Cars sieć warsztatów Q-Service, Perfect Service, Q-Service Premium.
@@ -52,10 +52,10 @@
         <gap:plugin name="Example" />
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
-	<gap:plugin name="org.apache.cordova.splashscreen" />
+	<gap:plugin name="org.apache.cordova.splashscreen" version="0.2.7" />
 	<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" version="0.3.3" />
-	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.6" />
+	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.7" />
 	<gap:plugin name="nl.x-services.plugins.toast" version="2.0" />
 	<gap:plugin name="de.appplant.cordova.plugin.email-composer" version="0.8.1" />
 	
