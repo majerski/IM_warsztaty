@@ -100,8 +100,10 @@ function renderWarsztat(id){
 				}
 				$("#warsztaty_content").append(list);
 			}
+			var mailbody = '\n\nWysłano przeglądając warsztat:\n'+item.konto+'\n'+item.ulica+'\n'+item.kod.substr(0,2)+'-'+item.kod.substr(2)+' '+item.miasto+'\n\n';
 			$("#warsztaty_content").append('<a class="warsztat-btn bell" onclick="dial(\''+item.kom+'\')">zadzwoń <small>(+48 '+item.kom.substr(0,3)+' '+item.kom.substr(3,3)+' '+item.kom.substr(6,3)+')</small></a>');
-			$("#warsztaty_content").append('<a class="warsztat-btn envelope" onclick="warsztatMail('+i+')" target="_blank">napisz e-mail</a>');
+			$("#warsztaty_content").append('<a class="warsztat-btn envelope" href="mailto:tomasz@arcontact.pl?subject='+encodeURIComponent('Zapytanie z aplikacji mobilnej Inter Cars sieć warsztatów.')+'&body='+encodeURIComponent(mailbody)+'" target="_blank">napisz e-mail</a>');
+			$("#warsztaty_content").append('<a class="warsztat-btn envelope" onclick="warsztatMail('+i+')">napisz e-mail 2</a>');
 			$("#warsztaty_content").append('<a class="warsztat-btn paper_plane" href="geo:0,0?q='+encodeURI(item.miasto+', '+item.ulica)+'">nawiguj</a>');
 			$("#warsztaty_content").append('<a class="warsztat-btn map" href="#page3" onclick="showPoint('+item.lat+','+item.lng+')">pokaż na mapie</a>');
 			$('#warsztat').page();
