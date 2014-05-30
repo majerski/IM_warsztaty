@@ -76,6 +76,9 @@ ul.simple-pagination {list-style: none;}
 .input-outer div{margin:10px 10%;}
 .input-outer .ui-input-text{background-color:#fff}
 
+label.error{float:left;color:red;padding-top:.5em;vertical-align:top;font-weight:bold;}
+.send{}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 	#page0 .ui-content .ui-btn-up-c.ikona1{background-image:url('../img/srodek-1s.png');}

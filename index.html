@@ -147,41 +147,48 @@
 					</div>
 				</div>
                 <div data-role="content">
-					<form action="#page4" onsubmit="return false;">
-						
-						<label for="vin">numer VIN</label>
-						<input type="text" name="vin" id="vin" placeholder="numer VIN" />
-						
-						<label for="marka">marka, model, silnik</label>
-						<input type="text" name="marka" id="marka" placeholder="marka, model, silnik" />
-						
-						<label for="rok">rok produkcji</label>
-						<input type="number" name="rok" id="rok" placeholder="rok produkcji" />
-						
-						<label for="paliwo">rodzaj paliwa</label>
-						<select name="paliwo" id="paliwo" data-native-menu="false">
-							<option value="benzyna">benzyna</option>
-							<option value="olej napędowy">olej napędowy</option>
-							<option value="inne">inne</option>
-						</select>
-						
-						<label for="rejestr">numer rejestracyjny</label>
-						<input type="text" name="rejestr" id="rejestr" placeholder="numer rejestracyjny" />
-						
-						<label for="usluga">usługa do wyceny</label>
-						<textarea cols="40" rows="8" name="usluga" id="usluga"></textarea>
-						
-						<label for="email">E-mail</label>
-						<input type="email" name="email" id="email" placeholder="E-mail" />
-						
-						<label for="tel">Numer telefonu</label>
-						<input type="tel" name="tel" id="tel" placeholder="Numer telefonu" />
-						
-						<label for="miasto">miasto</label>
-						<input type="text" name="miasto" id="miasto" placeholder="miasto" />
-						
-						<input type="submit" value="wyślij" data-icon="check" data-iconpos="right" />
-						
+					<form onsubmit="return false;" id="wycena">
+						<fieldset data-role="fieldcontain">
+							<label for="vin">numer VIN</label>
+							<input type="text" name="vin" id="vin" placeholder="numer VIN" class="required" />
+						</fieldset>
+						<fieldset data-role="fieldcontain">
+							<label for="marka">marka, model, silnik</label>
+							<input type="text" name="marka" id="marka" placeholder="marka, model, silnik" class="required" />
+						</fieldset>
+						<fieldset data-role="fieldcontain">
+							<label for="rok">rok produkcji</label>
+							<input type="number" name="rok" id="rok" placeholder="rok produkcji" class="required" />
+						</fieldset>
+						<fieldset data-role="fieldcontain">
+							<label for="paliwo">rodzaj paliwa</label>
+							<select name="paliwo" id="paliwo" data-native-menu="false" class="required">
+								<option value="benzyna">benzyna</option>
+								<option value="olej napędowy">olej napędowy</option>
+								<option value="inne">inne</option>
+							</select>
+						</fieldset>
+						<fieldset data-role="fieldcontain">
+							<label for="rejestr">numer rejestracyjny</label>
+							<input type="text" name="rejestr" id="rejestr" placeholder="numer rejestracyjny" class="required" />
+						</fieldset>
+						<fieldset data-role="fieldcontain">
+							<label for="usluga">usługa do wyceny</label>
+							<textarea cols="40" rows="8" name="usluga" id="usluga" class="required"></textarea>
+						</fieldset>
+						<fieldset data-role="fieldcontain">
+							<label for="email">E-mail</label>
+							<input type="email" name="email" id="email" placeholder="E-mail" class="required" />
+						</fieldset>
+						<fieldset data-role="fieldcontain">
+							<label for="tel">Numer telefonu</label>
+							<input type="tel" name="tel" id="tel" placeholder="Numer telefonu" class="required" />
+						</fieldset>
+						<fieldset data-role="fieldcontain">
+							<label for="miasto">miasto</label>
+							<input type="text" name="miasto" id="miasto" placeholder="miasto" class="required" />
+						</fieldset>
+						<input type="submit" value="wyślij" class="send" data-icon="check" data-iconpos="right" data-theme="d" />
 					</form>
 				</div>
 				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
@@ -224,6 +231,7 @@
         <script type="text/javascript" src="libs/jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="libs/jQueryMobile/jquery.mobile-1.3.2.min.js"></script>
 		<script type="text/javascript" src="libs/jquery.simplePagination.js"></script>
+		<script type="text/javascript" src="libs/jquery.validate.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
 			app.initialize();

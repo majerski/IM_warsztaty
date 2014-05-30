@@ -61,6 +61,7 @@ function closestMarker(position,use_warsztaty){
 	return closestMarker;
 }
 function displayPosition(pos){
+	$("#map_canvas").clear();
 	currentPosition = pos;
 	var mylat = pos.coords.latitude;
 	var mylong = pos.coords.longitude;
@@ -426,6 +427,13 @@ $(document).on('pageshow','#page3',function(){
 		var gmap = new GoogleMap();
 		gmap.initialize();
 	}
+});
+$(document).on('pageshow','#page4',function(){
+	$("#wycena").validate({
+		errorPlacement: function(error, element) {
+			error.insertAfter(element);
+		}
+	});
 });
 $(document).ready(function(){
 	checkVersion();
