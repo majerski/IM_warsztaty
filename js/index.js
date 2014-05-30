@@ -19,7 +19,7 @@ var app = {
 			alert('got window.plugin.email');
 			window.plugin.email.isServiceAvailable(
 				function(isAvailable){
-					alert('isServiceAvailable');
+					alert(isAvailable);
 				}
 			);
 		} else {
