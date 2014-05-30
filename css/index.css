@@ -69,6 +69,8 @@ ul.simple-pagination {list-style: none;}
 #warsztaty_content .warsztat-btn:active small{color:#fff}
 
 #map_canvas{width:100%;min-height:200px;background-color:#f5f5f5}
+.noscrollbar {line-height:1.35;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#444;}
+.noscrollbar span.capitalize{text-transform:capitalize;}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
