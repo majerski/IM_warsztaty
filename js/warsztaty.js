@@ -99,6 +99,7 @@ function displayPosition(pos){
 	} else {
 		var closestMarker1 = warsztatShowPointId;
 	}
+	warsztatShowPointId = false;
 	
 	var path = new google.maps.MVCArray();
 	var service = new google.maps.DirectionsService();
@@ -159,6 +160,7 @@ function geolocationError() {
 	} else {
 		createMarker(use_warsztaty[warsztatShowPointId]);
 	}
+	warsztatShowPointId = false;
 	showGeolocationForm();
 }
 function showGeolocationForm(){
