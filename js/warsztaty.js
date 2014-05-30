@@ -339,7 +339,8 @@ function geolocationError() {
 	}
 	//$(".ui-page-active .right-sidebar .sidebar-arrow p").html('Nie można ustalić pozycji - <a onclick="showGeolocationForm();">ustal ręcznie</a>');
 	
-	$('#page3 .ui-content').prepend('<div class="input-outer"><form id="geolocation-form" onsubmit="return false;"><input type="text" id="address" placeholder="Wprowadź adres (autouzupełnianie)" /></form></div>');
+	$('#page3 .ui-content').prepend('<div class="input-outer"><input type="text" id="address" placeholder="Wprowadź adres (autouzupełnianie)" /></div>');
+	$("#address").textinput();
 	
 	var mylat = startingLatitude;
 	var mylong = startingLongitude;
@@ -363,10 +364,13 @@ function geolocationError() {
 	for(var i=0; i<l; i++){
 		createMarker(use_warsztaty[i]);
 	}
+	
+	showGeolocationForm();
+	
 }
 function showGeolocationForm(){
 	//$(".ui-page-active .right-sidebar .sidebar-arrow p").html('<div class="input-outer"><form id="geolocation-form" onsubmit="return false;"><input type="text" id="address" placeholder="Wprowadź adres (autouzupełnianie)" /></form></div>');
-	var input = $(".ui-page-active #address").get(0);
+	var input = $("#address").get(0);
 	var autocomplete = new google.maps.places.Autocomplete(input);
 	autocomplete.bindTo('bounds', map);
 	var marker = new google.maps.Marker({
