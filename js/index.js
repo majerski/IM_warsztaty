@@ -17,6 +17,7 @@ var app = {
     onDeviceReady: function() {
 		if(typeof window.plugin.email != 'undefined' && typeof window.plugin.email != null){
 			//alert('got window.plugin.email');
+			console.log(window.plugin.email);
 			window.plugin.email.isServiceAvailable(
 				function(isAvailable){
 					//alert(isAvailable);
