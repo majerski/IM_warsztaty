@@ -16,14 +16,25 @@ var app = {
     },
     onDeviceReady: function() {
 		if(typeof window.plugin.email != 'undefined' && typeof window.plugin.email != null){
-			alert('got window.plugin.email');
+			//alert('got window.plugin.email');
 			window.plugin.email.isServiceAvailable(
 				function(isAvailable){
-					alert(isAvailable);
+					//alert(isAvailable);
+					window.plugin.email.open({
+						to:['tomasz@arcontact.pl'],
+						subject:'1',
+						body:'aa',
+						isHtml:true
+					});
 				}
 			);
-		} else {
-			alert('window.plugin.email not loaded');
+			
+			window.plugin.email.open({
+				to:['tomasz@arcontact.pl'],
+				subject:'2',
+				body:'bb',
+				isHtml:true
+			});
 		}
     },
 	onLoad: function() {
