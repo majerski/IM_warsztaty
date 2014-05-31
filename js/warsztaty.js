@@ -23,7 +23,7 @@ var warsztatShowPointId = false;
 
 function GoogleMap(){
 	this.initialize = function(){
-		var h = $(window).height() - 188;
+		var h = $(window).height() - 125;
 		$("#map_canvas").css({"height":h+"px"});
 		if(navigator.geolocation){
 			navigator.geolocation.getCurrentPosition(displayPosition,geolocationError);
@@ -388,7 +388,7 @@ function warsztatyLista(search){
 			cM = closestMarker(currentPosition,use_warsztaty);
 		}
 		
-		use_warsztaty = sortByKey(use_warsztaty, 'miasto');
+		use_warsztaty = sortByKey(use_warsztaty,'miasto');
 		$.each(use_warsztaty,function(i,item){
 			if(i%per_page==0 && i!=0){
 				out = out + '</ul></div><div class="warsztat"><ul data-ajax="false" data-inset="true">';
@@ -396,7 +396,7 @@ function warsztatyLista(search){
 			if(cM == i){
 				out = out + '<li class="closest"><a href="#warsztat" data-ajax="false" onclick="renderWarsztat('+i+')" data-transition="pop"><h5>Najbliższy warsztat</h5><h6>' + item.konto + '</h6><span>' + item.miasto.toLowerCase() + ', ' + item.ulica.toLowerCase() + '</span></a></li>';
 			} else {
-				out = out + '<li><a href="#warsztat" data-ajax="false" onclick="renderWarsztat('+i+')" data-transition="pop"><h6>' + item.konto + '</h6><span>' + item.miasto.toLowerCase() + ', ' + item.ulica.toLowerCase() + '</span></a></li>';
+				out = out + '<li><a href="#warsztat" data-ajax="false" onclick="renderWarsztat('+i+')" data-transition="pop"><h6>' + item.miasto.toLowerCase() + ', ' + item.ulica.toLowerCase() + '</h6><span>' + item.konto.toUpperCase() + '</span></a></li>';
 			}
 		});
 		out = out + '</div>';
@@ -422,9 +422,12 @@ function warsztatyLista(search){
 		}
 	}
 }
+function warsztaty_order(type){
+	console.log(type);
+}
 
 function initNews(){
-	var h = $(window).height() - 188;
+	var h = $(window).height() - 125;
 	$('#articles').css({"min-height":h});
     var new_content = $('#articles_hidden div.news:eq(0)').clone();
     $('#articles').empty().addClass('loading');
@@ -449,14 +452,10 @@ function getNews() {
 	});
 	ajaxNews.done(function(res){
 		if(typeof res != 'undefined') {
-			$('#articles').removeClass('loading');
-
 			var xml = $(res);
 			var items = xml.find("item");
-
 			var list_block = $('<ul/>');
 			list_block.appendTo('#articles');
-
 			$.each(items, function(i, v) {
 				entry = {
 					title: $(v).find("title").text(),
@@ -467,6 +466,10 @@ function getNews() {
 				_news.push(entry);
 			});
 		}
+	}).fail(function(){
+		$('#articles').html('<p>Nie udało się wgrać newsów.</p>');
+	}).always(function(){
+		$('#articles').removeClass('loading');
 	});
 
 	var len = Object.keys(_news).length;
@@ -508,6 +511,9 @@ $(document).on('pageshow pagechange',function(){
 });
 $(document).on('pageshow','#page1',function(){
 	initNews();
+});
+$(document).on('pageshow','#page2',function(){
+	
 });
 $(document).on('pageshow','#page3',function(){
 	if(typeof GoogleMap != 'undefined'){

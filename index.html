@@ -38,9 +38,9 @@
 				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
                     <div data-role="navbar">
 						<ul>
-							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
-							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservice-logo.png" alt="" /></a></li>
-							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')"><img src="img/perfectservice-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')" class="qservice"><img src="img/qservice-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://q-servicepremium.pl/', '_system', 'location=no')" class="qservicepremium"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')" class="perfectservice"><img src="img/perfectservice-logo.png" alt="" /></a></li>
 						</ul>
                     </div>
                 </div>
@@ -65,15 +65,6 @@
 					<div class="articles_pagination"></div>
 					<div id="articles_hidden" style="display:none"></div>
                 </div>
-               <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-                    <div data-role="navbar">
-                        <ul>
-							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
-							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservice-logo.png" alt="" /></a></li>
-							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')"><img src="img/perfectservice-logo.png" alt="" /></a></li>
-						</ul>
-                    </div>
-                </div>
             </div>
 			<div id="page2" data-role="page">
 				<div data-role="header" data-id="page2-header" id="page2-header" data-position="fixed" class="ui-header">
@@ -92,20 +83,17 @@
 				<div data-role="content" id="warsztaty_container">
 					<div class="warsztaty_paginacja"></div>
                     <input type="search" placeholder="nazwa, miasto lub ulica" id="warsztat_search" onchange="return warsztaty_filter(this.value);" />
+					<div id="order">
+						<select data-native-menu="false" onchange="return warsztaty_order(this.value);">
+							<option value="1">alfabetycznie wg miast</option>
+							<option value="2">najmniejsza odległość</option>
+						</select>
+					</div>
 					<div id="warsztaty_lista">
 						<div class="centerText"><a href="#" data-role="button" data-theme="e" data-inline="true" data-icon="refresh" data-iconpos="top" class="refresh_connection">odśwież połączenie</a></div>
 					</div>
 					<div class="warsztaty_paginacja"></div>
 					<div id="warsztaty_lista_hidden" style="display:none"></div>
-                </div>
-				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
-                    <div data-role="navbar">
-                        <ul>
-							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
-							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservice-logo.png" alt="" /></a></li>
-							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')"><img src="img/perfectservice-logo.png" alt="" /></a></li>
-						</ul>
-                    </div>
                 </div>
             </div>
 			<div id="page3" data-role="page">
@@ -125,15 +113,6 @@
                 <div data-role="content" style="padding:0px">
 					<div id="map_canvas"></div>
 				</div>
-				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
-                    <div data-role="navbar">
-                       <ul>
-							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
-							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservice-logo.png" alt="" /></a></li>
-							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')"><img src="img/perfectservice-logo.png" alt="" /></a></li>
-						</ul>
-                    </div>
-                </div>
 			</div>
 			<div id="page4" data-role="page">
                <div data-role="header" data-id="page4-header" id="page4-header" data-position="fixed" class="ui-header">
@@ -194,15 +173,6 @@
 						<input type="submit" value="wyślij" class="send" data-icon="check" data-iconpos="right" data-theme="d" />
 					</form>
 				</div>
-				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
-                    <div data-role="navbar">
-                        <ul>
-							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
-							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservice-logo.png" alt="" /></a></li>
-							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')"><img src="img/perfectservice-logo.png" alt="" /></a></li>
-						</ul>
-                    </div>
-                </div>
 			</div>
 			<div id="warsztat" data-role="page" data-url="warsztat" style="padding-top:125px">
 				<div data-role="header" data-id="warsztat-header" id="warsztat-header" data-position="fixed" class="ui-header">
@@ -219,15 +189,6 @@
 					</div>
 				</div>
 				<div data-role="content" id="warsztaty_content"></div>
-				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
-                    <div data-role="navbar">
-                        <ul>
-							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
-							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')"><img src="img/qservice-logo.png" alt="" /></a></li>
-							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')"><img src="img/perfectservice-logo.png" alt="" /></a></li>
-						</ul>
-                    </div>
-                </div>
 			</div>
         </div>
         <script type="text/javascript" src="libs/fastclick.min.js"></script>
