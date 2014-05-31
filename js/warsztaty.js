@@ -5,7 +5,8 @@ $(window).load(function(){
 	$("#app").show();
 });
 
-var newsUrl = 'http://www.q-service.com.pl/rss/';
+//var newsUrl = 'http://www.q-service.com.pl/rss/';
+var newsUrl = 'http://arcontact.pl/warsztaty_inter_cars/rss.php';
 var warsztaty = [];
 var _warsztaty = []; // po szukaniu
 var use_warsztaty = [];
@@ -291,11 +292,9 @@ function renderWarsztat(id){
 				}
 				$("#warsztaty_content").append(list);
 			}
-			var mailbody = '\n\nWysłano przeglądając warsztat:\n'+item.konto+'\n'+item.ulica+'\n'+item.kod.substr(0,2)+'-'+item.kod.substr(2)+' '+item.miasto+'\n\n';
-			$("#warsztaty_content").append('<a class="warsztat-btn bell" onclick="dial(\''+item.kom+'\')">zadzwoń <small>(+48 '+item.kom.substr(0,3)+' '+item.kom.substr(3,3)+' '+item.kom.substr(6,3)+')</small></a>');
-			$("#warsztaty_content").append('<a class="warsztat-btn envelope" onclick="warsztatMail('+i+')">napisz e-mail</a>');
-			$("#warsztaty_content").append('<a class="warsztat-btn paper_plane" href="geo:0,0?q='+encodeURI(item.miasto+', '+item.ulica)+'">nawiguj</a>');
-			$("#warsztaty_content").append('<a class="warsztat-btn map" href="#page3" onclick="showPoint('+i+')">pokaż na mapie</a>');
+			$(".footer_phone").click(function(){dial(item.kom);}).append('+48 '+item.kom.substr(0,3)+' '+item.kom.substr(3,3)+' '+item.kom.substr(6,3));
+			$(".footer_paper_plane").attr("href","geo:0,0?q="+encodeURI(item.miasto+', '+item.ulica));
+			$(".footer_map").attr("href","#page3").click(function(){showPoint(i);});
 			$('#warsztat').page();
 		}
 	});
@@ -530,7 +529,7 @@ $(document).on('pageshow','#page4',function(){
 			required: "pole wymagane"
 		},
 		submitHandler:function(form){
-			var mailbody1 = '<p>Dane z formularza:</p><p>numer VIN: '+$("#vin").val()+'<br />marka, model, silnik: '+$("#marka").val()+'<br />rok produkcji: '+$("#rok").val()+'<br />rodzaj paliwa: '+$("#paliwo").val()+'<br />numer rejestracyjny: '+$("#rejestr").val()+'<br />usługa do wyceny: '+$("#usluga").val()+'<br />e-mail: '+$("#email").val()+'<br />numer telefonu: '+$("#tel").val()+'<br />miasto: '+$("#miasto").val()+'</p>';
+			var mailbody1 = '<p>Dane z formularza:</p><p>typ auta: '+$("#formtyp").val()+'<br />numer VIN: '+$("#vin").val()+'<br />marka, model, silnik: '+$("#marka").val()+'<br />rok produkcji: '+$("#rok").val()+'<br />rodzaj paliwa: '+$("#paliwo").val()+'<br />numer rejestracyjny: '+$("#rejestr").val()+'<br />usługa do wyceny: '+$("#usluga").val()+'<br />e-mail: '+$("#email").val()+'<br />numer telefonu: '+$("#tel").val()+'<br />miasto: '+$("#miasto").val()+'</p>';
 			window.plugin.email.isServiceAvailable(
 				function(isAvailable){
 					window.plugin.email.open({

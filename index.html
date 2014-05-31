@@ -131,6 +131,14 @@
                 <div data-role="content">
 					<form onsubmit="return false;" id="wycena">
 						<fieldset data-role="fieldcontain">
+							<label for="formtyp">typ auta</label>
+							<select name="formtyp" id="formtyp" data-native-menu="false" class="required">
+								<option value="auto prywatne">auto prywatne</option>
+								<option value="auto firmowe">auto firmowe</option>
+								<option value="flota">flota</option>
+							</select>
+						</fieldset>
+						<fieldset data-role="fieldcontain">
 							<label for="vin">numer VIN</label>
 							<input type="text" name="vin" id="vin" placeholder="numer VIN" class="required" />
 						</fieldset>
@@ -147,6 +155,7 @@
 							<select name="paliwo" id="paliwo" data-native-menu="false" class="required">
 								<option value="benzyna">benzyna</option>
 								<option value="olej napędowy">olej napędowy</option>
+								<option value="LPG">LPG</option>
 								<option value="inne">inne</option>
 							</select>
 						</fieldset>
@@ -189,6 +198,15 @@
 					</div>
 				</div>
 				<div data-role="content" id="warsztaty_content"></div>
+				<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="warsztat_footer">
+                    <div data-role="navbar">
+						<ul>
+							<li><a href="#" class="footer_phone"><img src="img/phone.png" alt="" /></a></li>
+							<li><a href="#" class="footer_paper_plane"><img src="img/paper_plane.png" alt="" />nawiguj</a></li>
+							<li><a href="#" class="footer_map"><img src="img/map.png" alt="" />pokaż na mapie</a></li>
+						</ul>
+                    </div>
+                </div>
 			</div>
         </div>
         <script type="text/javascript" src="libs/fastclick.min.js"></script>
