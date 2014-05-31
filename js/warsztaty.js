@@ -251,11 +251,13 @@ function renderWarsztat(id){
 			$("#warsztaty_content").empty();
 			$("#warsztaty_content").append('<h2>'+item.konto+'</h2>');
 			$("#warsztaty_content").append('<p>'+item.ulica+'<br />'+item.kod.substr(0,2)+'-'+item.kod.substr(2)+' '+item.miasto+'</p>');
-			$("#warsztaty_content").append('<p>otwarte '+item.open+'<br />w soboty '+item.opensob+'</p>');
+			$("#warsztaty_content").append('<table><tr><td>otwarte </td><td>'+item.open+'</td></tr><tr><td>w soboty </td><td>'+item.opensob+'</td></tr></table>');
 			if(item.mechanika==1 || item.przeglad==1 || item.wulkanizacja==1 || item.klimatyzacja==1 || item.geometria==1 || item.diagnostyka==1 || item.elektryka==1 || item.spaliny==1 || item.blacharstwo==1 || item.lakiernictwo==1 || item.szyby==1) {
 				var list = document.createElement('ul');
-				list.style.marginTop = "0px";
-				$("#warsztaty_content").append('<p style="margin-bottom:0px">Specjalizacje:</p>');
+				list.style.marginTop = "15px";
+				list.style.marginLeft = "0px";
+				list.style.paddingLeft = "17px";
+				list.style.listStyleType = "square";
 				if(item.mechanika==1){
 					var li=document.createElement('li');li.innerHTML='mechanika';list.appendChild(li);
 				}
@@ -292,7 +294,7 @@ function renderWarsztat(id){
 				}
 				$("#warsztaty_content").append(list);
 			}
-			$(".footer_phone").click(function(){dial(item.kom);}).append('+48 '+item.kom.substr(0,3)+' '+item.kom.substr(3,3)+' '+item.kom.substr(6,3));
+			$(".footer_phone").click(function(){dial(item.kom);}).html('<img src="img/phone.png" alt="" />'+item.kom.substr(0,3)+' '+item.kom.substr(3,3)+' '+item.kom.substr(6,3));
 			$(".footer_paper_plane").attr("href","geo:0,0?q="+encodeURI(item.miasto+', '+item.ulica));
 			$(".footer_map").attr("href","#page3").click(function(){showPoint(i);});
 			$('#warsztat').page();
