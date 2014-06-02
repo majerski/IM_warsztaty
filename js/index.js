@@ -2,6 +2,7 @@ var warsztaty = [];
 var feedFromServer = false;
 var feedFromLocal = true;
 var warsztaty_loaded = false;
+var artykuly_loaded = false;
 
 var app = {
     initialize: function() {

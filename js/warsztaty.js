@@ -429,6 +429,14 @@ function warsztatyLista(search){
 					warsztaty_loaded = true;
 					feedFromLocal = false;
 				}
+			}).fail(function(){
+				$.getScript("js/warsztaty_var.js", function(){
+					if(supports_html5_storage()) {
+						localStorage["warsztaty"] = JSON.stringify(warsztaty);
+					}
+					feedFromLocal = false;
+					warsztaty_loaded = true;
+				});
 			});
 		}
 		if(feedFromLocal){
@@ -587,6 +595,7 @@ function getNews() {
 				};
 				_news.push(entry);
 			});
+			artykuly_loaded = true;
 		}
 	}).fail(function(){
 		$('#articles').html('<p>Nie udało się wgrać newsów.</p>');
@@ -594,6 +603,10 @@ function getNews() {
 		$('#articles').removeClass('loading');
 	});
 
+	if(!artykuly_loaded){
+		$('#articles').html('<p>Nie udało się wgrać newsów.</p>');
+	}
+	
 	var len = Object.keys(_news).length;
 	if( len > 0 ) {
 		$('#articles').empty();
@@ -624,6 +637,7 @@ function getNews() {
 			onInit: initNews
 		});
 	} else {
+		$('#articles').html('<p>Nie udało się wgrać newsów.</p>');
 		window.plugins.toast.showLongCenter('Nie udało się wgrać listy aktualności. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
 	}
 };
