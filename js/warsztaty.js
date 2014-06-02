@@ -439,6 +439,20 @@ function warsztatyLista(search){
 		});
 		feedFromLocal = false;
 	}
+	
+	
+	window.setTimeout(function(){
+		if($('#warsztaty_lista').text()==''){
+			$.getScript("js/warsztaty_var.js", function(){
+				if(supports_html5_storage()) {
+					localStorage["warsztaty"] = JSON.stringify(warsztaty);
+				}
+			});
+			feedFromLocal = false;
+			return warsztatyLista(false);
+		}
+	},3000);
+	
 	if(!search) {
 		use_warsztaty = warsztaty;
 	}
