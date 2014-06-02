@@ -7,11 +7,9 @@ $(window).load(function(){
 
 //var newsUrl = 'http://www.q-service.com.pl/rss/';
 var newsUrl = 'http://arcontact.pl/warsztaty_inter_cars/rss.php';
-var warsztaty = [];
+
 var _warsztaty = []; // po szukaniu
 var use_warsztaty = [];
-var feedFromServer = false;
-var feedFromLocal = true;
 var map;
 var startingLatitude = 52.069347;
 var startingLongitude = 19.480204;
@@ -439,6 +437,8 @@ function warsztatyLista(search){
 			feedFromLocal = false;
 		});
 	}
+	
+	warsztaty_loaded = true;
 	
 	window.setTimeout(function(){
 		if($('#warsztaty_lista').text()==''){

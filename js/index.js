@@ -1,3 +1,8 @@
+var warsztaty = [];
+var feedFromServer = false;
+var feedFromLocal = true;
+var warsztaty_loaded = false;
+
 var app = {
     initialize: function() {
         this.bindEvents();
@@ -22,8 +27,16 @@ var app = {
     },
 	onOffline: function() {
 		window.plugins.toast.showLongCenter('Brak połączenia z internetem.',function(a){},function(b){});
+		if(!warsztaty_loaded) {
+			feedFromServer = false;
+			feedFromLocal = true;
+		}
 	},
 	onOnline: function() {
 		window.plugins.toast.showShortBottom('Nawiązano połączenie z internetem.',function(a){},function(b){});
+		if(!warsztaty_loaded) {
+			feedFromServer = true;
+			feedFromLocal = false;
+		}
     }
 };
