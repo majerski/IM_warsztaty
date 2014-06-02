@@ -411,35 +411,36 @@ function warsztatyLista(search){
 		feedFromServer = false;
 		use_warsztaty = _warsztaty;
 	}
-	if(feedFromServer) {
-		var ajaxFeed = $.ajax({
-			url: "http://arcontact.pl/warsztaty_inter_cars/feed.php",
-			type: "GET",
-			data: {type:"list"},
-			dataType: "json",
-			async: false
-		});
-		ajaxFeed.done(function(response){
-			if(typeof response != 'undefined') {
-				warsztaty = response;
-				if( supports_html5_storage() ) {
+	if(!warsztaty_loaded){
+		if(feedFromServer) {
+			var ajaxFeed = $.ajax({
+				url: "http://arcontact.pl/warsztaty_inter_cars/feed.php",
+				type: "GET",
+				data: {type:"list"},
+				dataType: "json",
+				async: false
+			});
+			ajaxFeed.done(function(response){
+				if(typeof response != 'undefined') {
+					warsztaty = response;
+					if( supports_html5_storage() ) {
+						localStorage["warsztaty"] = JSON.stringify(warsztaty);
+					}
+					feedFromLocal = false;
+				}
+			});
+		}
+		if(feedFromLocal){
+			$.getScript("js/warsztaty_var.js", function(){
+				if(supports_html5_storage()) {
 					localStorage["warsztaty"] = JSON.stringify(warsztaty);
 				}
 				feedFromLocal = false;
-			}
-		});
+			});
+		}
+		
+		warsztaty_loaded = true;
 	}
-	if(feedFromLocal){
-		$.getScript("js/warsztaty_var.js", function(){
-			if(supports_html5_storage()) {
-				localStorage["warsztaty"] = JSON.stringify(warsztaty);
-			}
-			feedFromLocal = false;
-		});
-	}
-	
-	warsztaty_loaded = true;
-	
 	window.setTimeout(function(){
 		if($('#warsztaty_lista').text()==''){
 			$.getScript("js/warsztaty_var.js", function(){
