@@ -5,8 +5,8 @@ $(window).load(function(){
 	$("#app").show();
 });
 
-//var newsUrl = 'http://www.q-service.com.pl/rss/';
-var newsUrl = 'http://arcontact.pl/warsztaty_inter_cars/rss.php';
+var newsUrl = 'http://www.q-service.com.pl/rss/';
+//var newsUrl = 'http://arcontact.pl/warsztaty_inter_cars/rss.php';
 
 var _warsztaty = []; // po szukaniu
 var use_warsztaty = [];
@@ -348,7 +348,8 @@ function renderWarsztat(id){
 				}
 				$("#warsztaty_content").append(list);
 			}
-			$(".footer_phone").click(function(){dial(item.kom);}).html('<span class="ui-btn-inner"><span class="ui-btn-text"><img src="img/phone.png" alt="" />'+item.kom.substr(0,3)+' '+item.kom.substr(3,3)+' '+item.kom.substr(6,3)+'</span></span>');
+			$(".footer_phone .telnumber").html(''+item.kom.substr(0,3)+' '+item.kom.substr(3,3)+' '+item.kom.substr(6,3)+'');
+			$(".footer_phone").click(function(){dial(item.kom);});
 			$(".footer_paper_plane").attr("href","geo:0,0?q="+encodeURI(item.miasto+', '+item.ulica));
 			$(".footer_map").attr("href","#page3").click(function(){showPoint(i);});
 			$('#warsztat').page();
@@ -638,7 +639,10 @@ function getNews() {
 		});
 	} else {
 		$('#articles').html('<p>Nie udało się wgrać newsów.</p>');
-		window.plugins.toast.showLongCenter('Nie udało się wgrać listy aktualności. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
+		document.getElementById("articles").innerHTML="Nie udało się wgrać newsów.";
+		if(typeof window.plugins != 'undefined' && typeof window.plugins.toast != 'undefined'){
+			window.plugins.toast.showLongCenter('Nie udało się wgrać listy aktualności. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
+		}
 	}
 };
 
