@@ -7,9 +7,11 @@ $(window).load(function(){
 
 //var newsUrl = 'http://www.q-service.com.pl/rss/';
 var newsUrl = 'http://arcontact.pl/warsztaty_inter_cars/rss.php';
+var warsztaty = [];
 var _warsztaty = []; // po szukaniu
 var use_warsztaty = [];
 var feedFromServer = false;
+var feedFromLocal = true;
 var map;
 var startingLatitude = 52.069347;
 var startingLongitude = 19.480204;
@@ -425,14 +427,17 @@ function warsztatyLista(search){
 				if( supports_html5_storage() ) {
 					localStorage["warsztaty"] = JSON.stringify(warsztaty);
 				}
+				feedFromLocal = false;
 			}
-		}).error(function(){
-			//$.getScript("js/warsztaty_var.js", function(){
-			//	if(supports_html5_storage()) {
-			//		localStorage["warsztaty"] = JSON.stringify(warsztaty);
-			//	}
-			//});
 		});
+	}
+	if(feedFromLocal){
+		$.getScript("js/warsztaty_var.js", function(){
+			if(supports_html5_storage()) {
+				localStorage["warsztaty"] = JSON.stringify(warsztaty);
+			}
+		});
+		feedFromLocal = false;
 	}
 	if(!search) {
 		use_warsztaty = warsztaty;
@@ -454,7 +459,6 @@ function warsztatyLista(search){
 					var mylat = currentPosition.lat();
 					var mylong = currentPosition.lng();
 				}
-				
 				var latlng = new google.maps.LatLng(mylat,mylong);
 				$.each(use_warsztaty,function(i,item){
 					var itemPos = new google.maps.LatLng(item.lat,item.lng);

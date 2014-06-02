@@ -1,4 +1,3 @@
-var warsztaty = [];
 var app = {
     initialize: function() {
         this.bindEvents();
@@ -23,11 +22,6 @@ var app = {
     },
 	onOffline: function() {
 		window.plugins.toast.showLongCenter('Brak połączenia z internetem.',function(a){},function(b){});
-		$.getScript("js/warsztaty_var.js", function(){
-			if(supports_html5_storage()) {
-				localStorage["warsztaty"] = JSON.stringify(warsztaty);
-			}
-		});
 	},
 	onOnline: function() {
 		window.plugins.toast.showShortBottom('Nawiązano połączenie z internetem.',function(a){},function(b){});
