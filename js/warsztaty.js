@@ -42,8 +42,9 @@ function createMarker(location) {
 		position: latlng,
 		icon:icons[mapicon]
 	});
+	var infoWindowContent = '<div class="noscrollbar">' + location.konto + '<br /><br /><span class="capitalize">'+location.ulica.toLowerCase()+'<br />'+location.kod.substr(0,2)+'-'+location.kod.substr(2)+' '+location.miasto.toLowerCase()+'</span><div><a onclick="dial(\''+location.kom+'\')"><img src="img/phone.png" alt="" />'+location.kom+'</a><a href="geo:0,0?q='+encodeURI(location.miasto+', '+location.ulica)+'"><img src="img/paper_plane.png" alt="" />nawiguj</a></div></div>';
 	var infowindow = new google.maps.InfoWindow({
-		content: '<div class="noscrollbar">' + location.konto + '<br /><br /><span class="capitalize">'+location.ulica.toLowerCase()+'<br />'+location.kod.substr(0,2)+'-'+location.kod.substr(2)+' '+location.miasto.toLowerCase()+'</span><br /><br /><a href="geo:0,0?q='+encodeURI(location.miasto+', '+location.ulica)+'" class="ui-btn ui-mini ui-icon-location ui-btn-icon-left ui-corner-all">pokaż w nawigacji</a></div>'
+		content: infoWindowContent
 	});
 	google.maps.event.addListener(marker, 'click', function() {
 		infowindow.open(map, this);
@@ -348,7 +349,7 @@ function renderWarsztat(id){
 				}
 				$("#warsztaty_content").append(list);
 			}
-			$(".footer_phone").click(function(){dial(item.kom);}).html('<img src="img/phone.png" alt="" />'+item.kom.substr(0,3)+' '+item.kom.substr(3,3)+' '+item.kom.substr(6,3));
+			$(".footer_phone").click(function(){dial(item.kom);}).html('<span class="ui-btn-inner"><span class="ui-btn-text"><img src="img/phone.png" alt="" />'+item.kom.substr(0,3)+' '+item.kom.substr(3,3)+' '+item.kom.substr(6,3)+'</span></span>');
 			$(".footer_paper_plane").attr("href","geo:0,0?q="+encodeURI(item.miasto+', '+item.ulica));
 			$(".footer_map").attr("href","#page3").click(function(){showPoint(i);});
 			$('#warsztat').page();
@@ -426,6 +427,12 @@ function warsztatyLista(search){
 					localStorage["warsztaty"] = JSON.stringify(warsztaty);
 				}
 			}
+		}).error(function(){
+			$.getScript("js/warsztaty_var.js", function(){
+				if(supports_html5_storage()) {
+					localStorage["warsztaty"] = JSON.stringify(warsztaty);
+				}
+			});
 		});
 	}
 	if(!search) {
@@ -492,7 +499,9 @@ function warsztatyLista(search){
 			$('#warsztaty_lista').html('<p>Brak warsztatów.</p>');
 			$('.warsztaty_paginacja').pagination('destroy');
 		} else {
-			window.plugins.toast.showLongCenter('Nie udało się wgrać listy warsztatów. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
+			if(typeof window.plugins != 'undefined' && typeof window.plugins.toast != 'undefined'){
+				window.plugins.toast.showLongCenter('Nie udało się wgrać listy warsztatów. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
+			}
 		}
 	}
 }
@@ -613,6 +622,16 @@ function getNews() {
 	}
 };
 
+function loadScript(url,callback){
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    script.onreadystatechange = callback;
+    script.onload = callback;
+    head.appendChild(script);
+}
+
 $(document).on('pageshow pagechange',function(){
 	$(".ui-page-active [data-role=header]").fixedtoolbar({updatePagePadding:true});
 });
@@ -628,15 +647,12 @@ $(document).on('pageshow','#page2',function(){
 	
 	var prepared = new Array();
 	$.each(use_warsztaty,function(i,item){
-		prepared[i] = {"value":item.konto};
+		prepared[i] = {"value":item.konto+' '+item.miasto};
 	});
 	
 	$('#warsztat_search').autocomplete({
 		dataType:'jsonp',
-		lookup: prepared,
-		onSearchStart:function(query){
-			console.log(query);
-		}
+		lookup: prepared
 	});
 });
 $(document).on('pageshow','#page3',function(){
