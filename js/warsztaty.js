@@ -426,6 +426,7 @@ function warsztatyLista(search){
 					if( supports_html5_storage() ) {
 						localStorage["warsztaty"] = JSON.stringify(warsztaty);
 					}
+					warsztaty_loaded = true;
 					feedFromLocal = false;
 				}
 			});
@@ -436,22 +437,10 @@ function warsztatyLista(search){
 					localStorage["warsztaty"] = JSON.stringify(warsztaty);
 				}
 				feedFromLocal = false;
+				warsztaty_loaded = true;
 			});
 		}
-		
-		warsztaty_loaded = true;
 	}
-	window.setTimeout(function(){
-		if($('#warsztaty_lista').text()==''){
-			$.getScript("js/warsztaty_var.js", function(){
-				if(supports_html5_storage()) {
-					localStorage["warsztaty"] = JSON.stringify(warsztaty);
-				}
-				feedFromLocal = false;
-				return warsztatyLista(false);
-			});
-		}
-	},3000);
 	
 	if(!search) {
 		use_warsztaty = warsztaty;
