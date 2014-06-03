@@ -218,6 +218,9 @@
 			app.initialize();
 			var curYear = new Date().getFullYear();
 			$('#rok').val(curYear);
+			if(typeof window.plugins != 'undefined' && typeof window.plugins.Shortcut != 'undefined'){
+				window.plugins.Shortcut.CreateShortcut("Text to show", function(a){}, function(b){} );
+			}
         </script>
 		<script type="text/javascript" src="js/warsztaty.js"></script>
     </body>
