@@ -560,7 +560,7 @@ function initNews(){
 	var h = $(window).height() - 125;
 	$('#articles').css({"min-height":h});
     var new_content = $('#articles_hidden div.news:eq(0)').clone();
-    $('#articles').empty().addClass('loading');
+    
 	$('#articles').append(new_content);
 	$('#page1').page();
 	$('#articles ul').listview();
@@ -573,7 +573,7 @@ function clickNews(news_index, jq){
     return false;
 };
 function getNews() {
-	$('#articles').empty();
+	$('#articles').empty().addClass('loading');
 	var _news = [];
 	var ajaxNews = $.ajax({
 		url: newsUrl,
