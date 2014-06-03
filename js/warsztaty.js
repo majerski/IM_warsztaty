@@ -242,6 +242,7 @@ function showGeolocationForm(){
 	});
 }
 function showPoint(id){
+	markers = [];
 	$("#map_canvas").empty();
 	$("#map_canvas").removeClass("loaded");
 	document.getElementById("map_canvas").innerHTML="";
