@@ -150,7 +150,7 @@ function geolocationError() {
 	}
 	var latlng = new google.maps.LatLng(mylat, mylong);
 	var myOptions = {
-		zoom: 7,
+		zoom: 12,
 		center: latlng,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		mapTypeControl: false,

@@ -38,8 +38,8 @@
 				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
                     <div data-role="navbar">
 						<ul>
-							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')" class="qservice"><img src="img/qservice-logo.png" alt="" /></a></li>
 							<li><a onclick="window.open('http://q-servicepremium.pl/', '_system', 'location=no')" class="qservicepremium"><img src="img/qservicepremium-logo.png" alt="" /></a></li>
+							<li><a onclick="window.open('http://www.q-service.com.pl', '_system', 'location=no')" class="qservice"><img src="img/qservice-logo.png" alt="" /></a></li>
 							<li><a onclick="window.open('http://www.perfectservice.pl', '_system', 'location=no')" class="perfectservice"><img src="img/perfectservice-logo.png" alt="" /></a></li>
 						</ul>
                     </div>
@@ -84,7 +84,7 @@
 					<div class="warsztaty_paginacja"></div>
                     <input type="search" placeholder="nazwa, miasto lub ulica" id="warsztat_search" onchange="return warsztaty_filter(this.value);" />
 					<div id="order">
-						<select data-native-menu="false" onchange="return warsztaty_order(this.value);">
+						<select onchange="return warsztaty_order(this.value);">
 							<option value="1">alfabetycznie wg miast</option>
 							<option value="2">najmniejsza odległość</option>
 						</select>
@@ -130,7 +130,7 @@
 					<form onsubmit="return false;" id="wycena">
 						<fieldset data-role="fieldcontain">
 							<label for="formtyp">typ auta</label>
-							<select name="formtyp" id="formtyp" data-native-menu="false" class="required">
+							<select name="formtyp" id="formtyp" class="required">
 								<option value="auto prywatne">auto prywatne</option>
 								<option value="auto firmowe">auto firmowe</option>
 								<option value="flota">flota</option>
@@ -150,7 +150,7 @@
 						</fieldset>
 						<fieldset data-role="fieldcontain">
 							<label for="paliwo">rodzaj paliwa</label>
-							<select name="paliwo" id="paliwo" data-native-menu="false" class="required">
+							<select name="paliwo" id="paliwo" class="required">
 								<option value="benzyna">benzyna</option>
 								<option value="olej napędowy">olej napędowy</option>
 								<option value="LPG">LPG</option>
