@@ -2,6 +2,7 @@ var warsztaty = [];
 var feedFromServer = false;
 var feedFromLocal = true;
 var warsztaty_loaded = false;
+var exitCount = 0;
 
 var app = {
     initialize: function() {
@@ -13,6 +14,7 @@ var app = {
 		document.addEventListener("load", this.onLoad, false);
 		document.addEventListener("offline", this.onOffline, false);
 		document.addEventListener("online", this.onOnline, false);
+		document.addEventListener("backbutton", this.onBackKeyDown, false);
     },
     initFastClick: function() {
         window.addEventListener('load', function() {
@@ -38,5 +40,16 @@ var app = {
 			feedFromServer = true;
 			feedFromLocal = false;
 		}
-    }
+    },
+	onBackKeyDown: function() {
+		exitCount++;
+		if(exitCount > 1){
+			if(navigator.app){
+				navigator.app.exitApp();
+			}else if(navigator.device){
+				navigator.device.exitApp();
+			}
+		}
+		return false;
+	}
 };
