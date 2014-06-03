@@ -24,6 +24,7 @@ var warsztatShowPointId = false;
 var _order = 1;
 
 function GoogleMap(){
+	markers = [];
 	this.initialize = function(){
 		var h = $(window).height() - 125;
 		$("#map_canvas").css({"height":h+"px"});
@@ -85,26 +86,24 @@ function displayPosition(pos){
 		streetViewControl: false
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-	if(!warsztatShowPointId){
+	if((warsztatShowPointId && warsztatShowPointId > -1) || (parseInt(warsztatShowPointId)==0)) {
+		createMarker(use_warsztaty[warsztatShowPointId]);
+		var closestMarker1 = warsztatShowPointId;
+	} else {
 		var l = Object.keys(use_warsztaty).length;
 		for(var i=0; i<l; i++){
 			createMarker(use_warsztaty[i]);
 		}
 		var markerCluster = new MarkerClusterer(map, markers);
-	} else {
-		createMarker(use_warsztaty[warsztatShowPointId]);
+		var closestMarker1 = closestMarker(latlng, use_warsztaty);
 	}
+	warsztatShowPointId = false;
+	
 	var marker = new google.maps.Marker({
 		position: latlng,
 		map: map,
 		title: 'Twoja lokalizacja'
 	});
-	if(!warsztatShowPointId){
-		var closestMarker1 = closestMarker(latlng, use_warsztaty);
-	} else {
-		var closestMarker1 = warsztatShowPointId;
-	}
-	warsztatShowPointId = false;
 	
 	var path = new google.maps.MVCArray();
 	var service = new google.maps.DirectionsService();
@@ -211,6 +210,7 @@ function geolocationError() {
 	showGeolocationForm();
 }
 function showGeolocationForm(){
+	markers = [];
 	var input = $("#address").get(0);
 	var autocomplete = new google.maps.places.Autocomplete(input);
 	autocomplete.bindTo('bounds', map);
@@ -412,7 +412,7 @@ function checkVersion(){
 	});
 }
 function warsztatyLista(search){
-	$('#warsztaty_lista').empty();
+	$('#warsztaty_lista').empty().addClass("loading");
 	if(search) {
 		feedFromServer = false;
 		use_warsztaty = _warsztaty;
@@ -678,7 +678,7 @@ $(document).on('pageshow','#page2',function(){
 	
 	var prepared = new Array();
 	$.each(use_warsztaty,function(i,item){
-		prepared[i] = {"value":item.konto+' '+item.miasto};
+		prepared[i] = {"value":item.konto+', '+item.miasto};
 	});
 	
 	$('#warsztat_search').autocomplete({
