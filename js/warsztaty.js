@@ -5,8 +5,8 @@ $(window).load(function(){
 	$("#app").show();
 });
 
-var newsUrl = 'http://www.q-service.com.pl/rss/';
-//var newsUrl = 'http://arcontact.pl/warsztaty_inter_cars/rss.php';
+//var newsUrl = 'http://www.q-service.com.pl/rss/';
+var newsUrl = 'http://arcontact.pl/warsztaty_inter_cars/rss.php';
 
 var _warsztaty = []; // po szukaniu
 var use_warsztaty = [];
@@ -583,19 +583,26 @@ function getNews() {
 	});
 	ajaxNews.done(function(res){
 		if(typeof res != 'undefined') {
+			
+			var	xmlDoc = $.parseXML(res),
+				$xml = $(xmlDoc),
+				$title = $xml.find("title");
+				
+			console.log(xmlDoc);
+			
 			var xml = $(res);
 			var items = xml.find("item");
 			var list_block = $('<ul/>');
 			list_block.appendTo('#articles');
 			
 			var nowyObjekt = {};
-			
 			$.each(items, function(i, v) {
 				entry = {
 					title: $(v).find("title").text(),
 					date: $(v).find("pubDate").text(),
 					link: $(v).find("link").text(),
-					description: $.trim($(v).find("description").text())
+					description: $.trim($(v).find("description").text()),
+					image: $(v).find("image"),
 				};
 				var value = entry.title;
 				if(nowyObjekt[value]==null){
@@ -614,11 +621,10 @@ function getNews() {
 
 	var len = Object.keys(_news).length;
 	if( len > 0 ) {
-		console.log('ok');
 		var out = '<div class="news"><ul data-ajax="false" data-inset="true">';
 		var per_page = 10;
-
 		$.each(_news,function(i,item){
+			console.log(item);
 			if(i%per_page==0 && i!=0){
 				out = out + '</ul></div><div class="news"><ul data-ajax="false" data-inset="true">';
 			}
@@ -628,7 +634,6 @@ function getNews() {
 			out = out + '<li><a href="' +item.link+ '" data-ajax="false" rel="external"><h6>' + item.title + '</h6><span>' +date_string+ '</span></a></li>';
 		});
 		out = out + '</div>';
-
 		$("#articles_hidden").html(out);
 		$('.articles_pagination').pagination('destroy').pagination({
 			items: len,
@@ -642,7 +647,7 @@ function getNews() {
 			onInit: initNews
 		});
 	} else {
-		$('#articles').html('<p class="centerText">Włącz internet aby załadować newsy.</p>');
+		$('#articles').html('<p class="centerText">Wystąpił błąd podczas wgrywania newsów.</p>');
 		$('#articles').removeClass('loading');
 	}
 	
